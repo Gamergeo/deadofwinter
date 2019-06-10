@@ -25,6 +25,14 @@
 		<!-- Project dependency -->
 		<dependency>
 			<groupId>com.project</groupId>
+			<artifactId>deadofwinter-business</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.project</groupId>
+			<artifactId>deadofwinter-model</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.project</groupId>
 			<artifactId>deadofwinter-technical</artifactId>
 		</dependency>
 
@@ -49,10 +57,10 @@
 			<artifactId>spring-web</artifactId>
 		</dependency>
 
-		<!-- <dependency> -->
-		<!-- <groupId>org.apache.commons</groupId> -->
-		<!-- <artifactId>commons-dbcp2</artifactId> -->
-		<!-- </dependency> -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>

@@ -17,6 +17,9 @@
 		<spring.version>5.0.8.RELEASE</spring.version>
 		<mysql-connector.version>8.0.12</mysql-connector.version>
 		<maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+		<dbcp.version>2.5.0</dbcp.version>
+		<hibernate.version>5.3.6.Final</hibernate.version>
+		<jaxb.version>2.3.0</jaxb.version>
 	</properties>
 
 	<!-- Project Modules dependecy -->
@@ -50,6 +53,21 @@
 		<dependencies>
 
 			<!-- Project dependency -->
+			<dependency>
+				<groupId>com.project</groupId>
+				<artifactId>deadofwinter-persistance</artifactId>
+				<version>${deadofwinter.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.project</groupId>
+				<artifactId>deadofwinter-model</artifactId>
+				<version>${deadofwinter.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.project</groupId>
+				<artifactId>deadofwinter-business</artifactId>
+				<version>${deadofwinter.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>com.project</groupId>
 				<artifactId>deadofwinter-technical</artifactId>
@@ -91,6 +109,30 @@
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
 				<version>${mysql-connector.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
+			<!-- Pool de connection -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-dbcp2</artifactId>
+				<version>${dbcp.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-core</artifactId>
+				<version>${hibernate.version}</version>
+			</dependency>
+
+			<!-- Utile pour hibernate -->
+			<dependency>
+				<groupId>javax.xml.bind</groupId>
+				<artifactId>jaxb-api</artifactId>
+				<version>${jaxb.version}</version>
 				<scope>runtime</scope>
 			</dependency>
 
