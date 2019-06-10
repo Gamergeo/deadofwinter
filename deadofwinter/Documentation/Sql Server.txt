@@ -1,0 +1,8 @@
+Start a server :
+
+Windows + R
+services.msc
+Start mysql
+
+Username : root
+Password : gemar0.....
