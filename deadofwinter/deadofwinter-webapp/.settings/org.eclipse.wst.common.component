@@ -7,6 +7,9 @@
         <dependent-module archiveName="deadofwinter-business-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/deadofwinter-business/deadofwinter-business">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="deadofwinter-persistance-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/deadofwinter-persistance/deadofwinter-persistance">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="deadofwinter-model-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/deadofwinter-model/deadofwinter-model">
             <dependency-type>uses</dependency-type>
         </dependent-module>

@@ -20,6 +20,7 @@
 		<dbcp.version>2.5.0</dbcp.version>
 		<hibernate.version>5.3.6.Final</hibernate.version>
 		<jaxb.version>2.3.0</jaxb.version>
+		<jstl.version>1.2</jstl.version>
 	</properties>
 
 	<!-- Project Modules dependecy -->
@@ -134,6 +135,14 @@
 				<artifactId>jaxb-api</artifactId>
 				<version>${jaxb.version}</version>
 				<scope>runtime</scope>
+			</dependency>
+			
+			<!-- https://mvnrepository.com/artifact/jstl/jstl -->
+			<!--  Tag du type ${ } -->
+			<dependency>
+			    <groupId>jstl</groupId>
+			    <artifactId>jstl</artifactId>
+			    <version>${jstl.version}</version>
 			</dependency>
 
 		</dependencies>

@@ -10,15 +10,13 @@
             http://www.springframework.org/schema/context
             http://www.springframework.org/schema/context/spring-context.xsd
             http://www.springframework.org/schema/tx
-			http://www.springframework.org/schema/tx/spring-tx.xsd
-			http://www.springframework.org/schema/aop 
-			http://www.springframework.org/schema/aop/spring-aop.xsd">
+			http://www.springframework.org/schema/tx/spring-tx.xsd">
             
      <!-- Prend en compte la configuration des injections (@Autowired...) -->
     <context:annotation-config/>
 
     <!-- Scanne les packages pour trouver les beans qui se déclarent (@Named...) -->
-<!--     <context:component-scan base-package="com.project.deadofwinter.webapp"/> -->
+    <context:component-scan base-package="com.project.deadofwinter.model"/>
 <!--     <context:component-scan base-package="com.project.deadofwinter.webapp"/> -->
 <!--     <context:component-scan base-package="com.project.deadofwinter.webapp"/> -->
 <!--     <context:component-scan base-package="com.project.deadofwinter.webapp"/> -->
