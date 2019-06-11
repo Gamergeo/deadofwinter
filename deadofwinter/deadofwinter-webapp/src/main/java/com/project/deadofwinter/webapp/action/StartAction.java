@@ -23,14 +23,14 @@ public class StartAction extends AbstractAction {
 	@Autowired
 	private SearchService searchService;
 
-	@GetMapping(value="/start")
+	@GetMapping(value="/start.do")
 	public ModelAndView start(ModelMap model) {
 		model.addAttribute("message", "euh, ya quelqu'un ?");
 		
 		return new ModelAndView("start", "search", new Search());
 	}
 	
-	@PostMapping(value="/anewdawn")
+	@PostMapping(value="/anewdawn.do")
 	public ModelAndView search(@ModelAttribute("search")Search search, 
 		      BindingResult result, ModelMap model) {
 

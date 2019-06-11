@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.project.deadofwinter.model.constant.BaseColumnName;
@@ -23,20 +25,24 @@ public class MainObjective implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	protected int id;
 
-	@Column(name=BaseColumnName.COLUMN_MAINOBJECTIVE_MORAL)
-	protected int moral;
-
-	@Column(name=BaseColumnName.COLUMN_MAINOBJECTIVE_NUMBERTURN)
-	protected int numberTurn;
-
 	@Column(name=BaseColumnName.COLUMN_MAINOBJECTIVE_NAME)
 	protected String name;
 
-	@Column(name=BaseColumnName.COLUMN_MAINOBJECTIVE_OBJECTIVE)
-	protected String objecive;
+	@ManyToOne
+	@JoinColumn(name=BaseColumnName.COLUMN_MAINOBJECTIVE_VICTORY, referencedColumnName=BaseColumnName.COLUMN_DESCRIPTION_ID)
+	protected Description victory;
 
-	@Column(name=BaseColumnName.COLUMN_MAINOBJECTIVE_ADDRULE)
-	protected String additionalRule;
+	@ManyToOne
+	@JoinColumn(name=BaseColumnName.COLUMN_MAINOBJECTIVE_ADDRULE, referencedColumnName=BaseColumnName.COLUMN_DESCRIPTION_ID)
+	protected Description additionalRule;
+	
+	@ManyToOne
+	@JoinColumn(name=BaseColumnName.COLUMN_MAINOBJECTIVE_DIFFICULTY_NORMAL, referencedColumnName=BaseColumnName.COLUMN_DIFFICULTY_ID)
+	protected Difficulty difficultyNormal;
+	
+	@ManyToOne
+	@JoinColumn(name=BaseColumnName.COLUMN_MAINOBJECTIVE_DIFFICULTY_HARD, referencedColumnName=BaseColumnName.COLUMN_DIFFICULTY_ID)
+	protected Difficulty difficultyHard;
 
 	@Column(name=BaseColumnName.COLUMN_MAINOBJECTIVE_ORIGINAL)
 	protected boolean original;
@@ -55,22 +61,6 @@ public class MainObjective implements Serializable {
 		this.id = id;
 	}
 
-	public int getMoral() {
-		return moral;
-	}
-
-	public void setMoral(int moral) {
-		this.moral = moral;
-	}
-
-	public int getNumberTurn() {
-		return numberTurn;
-	}
-
-	public void setNumberTurn(int numberTurn) {
-		this.numberTurn = numberTurn;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -79,19 +69,19 @@ public class MainObjective implements Serializable {
 		this.name = name;
 	}
 
-	public String getObjecive() {
-		return objecive;
+	public Description getVictory() {
+		return victory;
 	}
 
-	public void setObjecive(String objecive) {
-		this.objecive = objecive;
+	public void setVictory(Description victory) {
+		this.victory = victory;
 	}
 
-	public String getAdditionalRule() {
+	public Description getAdditionalRule() {
 		return additionalRule;
 	}
 
-	public void setAdditionalRule(String additionalRule) {
+	public void setAdditionalRule(Description additionalRule) {
 		this.additionalRule = additionalRule;
 	}
 
@@ -121,5 +111,21 @@ public class MainObjective implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public Difficulty getDifficultyNormal() {
+		return difficultyNormal;
+	}
+
+	public void setDifficultyNormal(Difficulty difficultyNormal) {
+		this.difficultyNormal = difficultyNormal;
+	}
+
+	public Difficulty getDifficultyHard() {
+		return difficultyHard;
+	}
+
+	public void setDifficultyHard(Difficulty difficultyHard) {
+		this.difficultyHard = difficultyHard;
 	}
 }

@@ -6,7 +6,7 @@
 
 	<h2>Voici l'histoire de votre mort...</h2>
 
-	<c:url var="formUrl" value="/anewdawn"/>
+	<c:url var="formUrl" value="/anewdawn.do"/>
 	<form:form action="${formUrl}" method="post" modelAttribute="search">
 		<form:label path="hard">Difficile ?</form:label>
 		<form:checkbox path="hard" />
