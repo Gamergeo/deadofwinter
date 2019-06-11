@@ -17,9 +17,8 @@
 
     <!-- Scanne les packages pour trouver les beans qui se déclarent (@Named...) -->
     <context:component-scan base-package="com.project.deadofwinter.model"/>
-<!--     <context:component-scan base-package="com.project.deadofwinter.webapp"/> -->
-<!--     <context:component-scan base-package="com.project.deadofwinter.webapp"/> -->
-<!--     <context:component-scan base-package="com.project.deadofwinter.webapp"/> -->
+    <context:component-scan base-package="com.project.deadofwinter.business"/>
+    <context:component-scan base-package="com.project.deadofwinter.persistance"/>
     
     <!-- Import -->
     <import resource="classpath:/application-context-datasource.xml" />

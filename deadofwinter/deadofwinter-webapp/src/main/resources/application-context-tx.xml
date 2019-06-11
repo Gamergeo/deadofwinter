@@ -28,10 +28,12 @@
 	<tx:advice id="transactionAdvice"
 		transaction-manager="transactionManager">
 		<tx:attributes>
-			<tx:method name="*"
-				rollback-for="com.tutorial.game.exception.GameException" />
-			<tx:method name="get*" read-only="true"
-				rollback-for="com.tutorial.game.exception.GameException" />
+		
+			<tx:method name="*" />
+<!-- 			<tx:method name="*" -->
+<!-- 				rollback-for="com.tutorial.game.exception.GameException" /> -->
+<!-- 			<tx:method name="get*" read-only="true" -->
+<!-- 				rollback-for="com.tutorial.game.exception.GameException" /> -->
 		</tx:attributes>
 	</tx:advice>
 
