@@ -1,0 +1,13 @@
+/* Card title */
+@font-face {
+  font-family: 'Headline';
+  font-display: swap;
+  src: url('../font/HeadlineOne.ttf') format('truetype');
+}
+
+/* Card moral and number of turn */
+@font-face {
+  font-family: 'Ingleby';
+  font-display: swap;
+  src: url('../font/ingleby/Ingleby_italic.ttf') format('truetype');
+}

@@ -36,7 +36,7 @@ public class StartAction extends AbstractAction {
 
 		MainObjective mainObjective = searchService.search(search.isOriginal(), search.isExtension(), search.isCustom());
 		
-		return new ModelAndView("mainObjective", "mainObjective", mainObjective);
+		return new ModelAndView("/mainObjective/randomMainObjective", "mainObjective", mainObjective);
 	}
 
 	public SearchService getSearchService() {
