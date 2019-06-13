@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.util.StringUtils;
+
 import com.project.deadofwinter.model.constant.BaseColumnName;
 import com.project.deadofwinter.model.constant.BaseTableName;
 
@@ -52,6 +54,9 @@ public class MainObjective implements Serializable {
 
 	@Column(name=BaseColumnName.COLUMN_MAINOBJECTIVE_CUSTOM)
 	protected boolean custom;
+	
+	@Column(name=BaseColumnName.COLUMN_MAINOBJECTIVE_TIME)
+	protected int time;
 
 	public int getId() {
 		return id;
@@ -127,5 +132,53 @@ public class MainObjective implements Serializable {
 
 	public void setDifficultyHard(Difficulty difficultyHard) {
 		this.difficultyHard = difficultyHard;
+	}
+	
+	/**
+	 * @return a list of additional rule(s), each element means one sentence
+	 */
+	public String[] getAdditionalRuleText() {
+		return StringUtils.delimitedListToStringArray(getAdditionalRule().getText(), "\\n");
+	}
+	
+	private String getNormalAdditionalRuleText() {
+		String initial = getAdditionalRule().getText();
+		String toReplace;
+		
+		for (int i = 1; i <= getAdditionalRule().getNumberToReplace(); i++) {
+
+			toReplace = "{" + i + "}";
+			if (!initial.contains(toReplace)) {
+				throw new RuntimeException();
+			}
+			
+			initial = initial.replace(toReplace, "");
+
+		}
+			
+		return initial;
+	}
+		
+	
+	
+	/**
+	 * @return a list of additional rule(s), each element means one sentence
+	 */
+	public String[] getVictoryText() {		
+		return StringUtils.delimitedListToStringArray(getVictory().getText(), "\\n");
+	}
+	
+	public String getTime() {
+		switch (time) {
+		case 1:
+			return "COURTE";
+		case 2:
+			return "MOYENNE";
+		case 3:
+			return "LONGUE";
+
+		default:
+			return null;
+		} 
 	}
 }

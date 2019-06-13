@@ -20,6 +20,8 @@ public class BaseColumnName {
 	
 	public final static String COLUMN_MAINOBJECTIVE_CUSTOM = "custom";
 	
+	public final static String COLUMN_MAINOBJECTIVE_TIME = "time";
+	
 	public final static String COLUMN_DESCRIPTION_ID = "idDescription";
 
 	public final static String COLUMN_DESCRIPTION_TEXT = "text";

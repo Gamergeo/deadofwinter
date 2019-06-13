@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.util.StringUtils;
+
 import com.project.deadofwinter.model.constant.BaseColumnName;
 import com.project.deadofwinter.model.constant.BaseTableName;
 
@@ -105,5 +107,10 @@ public class Difficulty {
 
 	public void setNumberTurn(int numberTurn) {
 		this.numberTurn = numberTurn;
+	}
+	
+	public String getReplacingNumber(int index) {
+
+		return StringUtils.delimitedListToStringArray(getAdditionalRule().getText(), "\\n");
 	}
 }

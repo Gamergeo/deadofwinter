@@ -1,0 +1,119 @@
+/* Colors and font settings for card display */
+.cardTitle {
+	height: 32px;
+	text-align: center;
+	vertical-align: bottom;
+	font-size: 44px;
+	color: rgba(0, 0, 0, 0.7);
+ 	font-family: "Headline";
+}
+
+.cardSetUpLabel {
+	height: 42px;
+	text-align: center;
+	vertical-align: bottom;
+	font-size: 34px;
+	color: rgba(0, 0, 0, 0.7);
+ 	font-family: "Headline";
+}
+
+.cardMoral {
+	height: 28px; 
+	text-align: center;
+	color: rgba(0, 0, 0, 0.7);
+	font-size: 22px;
+ 	font-family: "Ingleby-italic";
+}
+
+.cardTurn {
+	height: 32px; 
+	text-align: center;
+	color: rgba(0, 0, 0, 0.7);
+	font-size: 22px;
+ 	font-family: "Ingleby-italic";
+}
+
+.cardText {
+	height: 22px; 
+	text-align: center;
+	color: rgba(0, 0, 0, 0.5);
+	font-size: 22px;
+ 	font-family: "Ingleby-bold";
+}
+
+.cardInterline {
+	height: 10px; 
+}
+
+/* Size of card table */
+table#cardTable {
+   margin-left:auto; 
+   margin-right:auto;
+	width: 579px;
+}
+
+/* Define size for each card table line */
+tr#mainObjectiveCardLine-1 {
+	height:71px;
+}
+
+tr#mainObjectiveCardLine-2 {
+	height:39px;
+}
+
+tr#mainObjectiveCardLine-3 {
+	height:25px;
+}
+
+tr#mainObjectiveCardLine-4 {
+	height:347px;
+}
+
+tr#mainObjectiveCardLine-5 {
+	height:25px;
+}
+
+tr#mainObjectiveCardLine-6 {
+	height:152px;
+}
+
+tr#mainObjectiveCardLine-7 {
+	height:24px;
+}
+
+tr#mainObjectiveCardLine-8 {
+	height:117px;
+}
+
+/* Define background for each card table cell */
+td#mainObjectiveCardCell-1 {
+	background-image: url(../images/card_template/Template-1.png);
+}
+
+td#mainObjectiveCardCell-2 {
+	background-image: url(../images/card_template/Template-2.png);
+}
+
+td#mainObjectiveCardCell-3 {
+	background-image: url(../images/card_template/Template-3.png);
+}
+
+td#mainObjectiveCardCell-4 {
+	background-image: url(../images/card_template/Template-4.png);
+}
+
+td#mainObjectiveCardCell-5 {
+	background-image: url(../images/card_template/Template-5.png);
+}
+
+td#mainObjectiveCardCell-6 {
+	background-image: url(../images/card_template/Template-6.png);
+}
+
+td#mainObjectiveCardCell-7 {
+	background-image: url(../images/card_template/Template-7.png);
+}
+
+td#mainObjectiveCardCell-8 {
+	background-image: url(../images/card_template/Template-8.png);
+}

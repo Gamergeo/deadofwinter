@@ -9,7 +9,7 @@
 @font-face {
   font-family: 'Ingleby-italic';
   font-display: swap;
-  src: url('../font/ingleby/Ingleby_italic.ttf') format('truetype');
+  src: url('../font/ingleby/Ingleby_bold_italic.ttf') format('truetype');
 }
 
 /* Card text */

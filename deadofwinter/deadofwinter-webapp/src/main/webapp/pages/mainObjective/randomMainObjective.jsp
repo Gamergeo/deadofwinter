@@ -10,17 +10,7 @@
 
 </head>
 
-<body>
-	<h1>Dead of Winter</h1>
-
-	<h2>Voici l'histoire de votre mort...</h2>
-	
-	${mainObjective.name}<br />
-	${mainObjective.victory.text}<br />
-	${mainObjective.additionalRule.text}<br />
-	${mainObjective.difficultyNormal.moral}<br />
-	${mainObjective.difficultyHard.numberTurn}<br />
-	
+<body>	
 	<jsp:include page="frame/mainObjectiveCard.jsp" />
 	
 	<br/>
