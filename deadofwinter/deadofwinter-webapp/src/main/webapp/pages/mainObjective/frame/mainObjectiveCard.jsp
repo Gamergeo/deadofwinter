@@ -16,11 +16,39 @@
 	 	background-color: red;
 	}
 	
+	/* Colors and font settings for card display */
 	.cardTitle {
 		text-align: center;
 		font-size: 38px;
 		color: rgba(0, 0, 0, 0.7);
   	font-family: "Headline";
+	}
+	
+	.cardMoralTurn {
+		color: rgba(0, 0, 0, 0.7);
+		font-size: 26px;
+  	font-family: "Ingleby-italic";
+	}
+	
+	.cardText {
+		text-align: center;
+		color: rgba(0, 0, 0, 0.5);
+		font-size: 22px;
+  	font-family: "Ingleby-bold";
+	}
+	
+  /* Placing text adjustments */
+	#divMoralNumber {
+ 		margin-left: 332px; 
+	}
+	
+	#divTurnNumber {
+ 		margin-left: 345px; 
+	}
+	
+	#divAddRuleText {
+ 		margin-top: 5px; 
+ 		
 	}
 
 	/* Add background image in css for each cell of the table */
@@ -50,7 +78,7 @@
 		<td id="mainObjectiveImageCell-1-0" class="mainObjectiveImageColumn-0" />
 		
 		<td id="mainObjectiveImageCell-1-1" class="mainObjectiveImageColumn-1 cardTitle">
-			Sombre est la nuit
+			${mainObjective.name}
 		</td>
 		
 		<td id="mainObjectiveImageCell-1-2" class="mainObjectiveImageColumn-2" />
@@ -65,23 +93,35 @@
 	
 	<!-- Ligne 3 : Moral --> 
 	<tr id="mainObjectiveImageLine-3">
-		<c:forEach var = "col" begin = "0" end = "2">
-			<td id="mainObjectiveImageCell-3-${col}" class="mainObjectiveImageColumn-${col}" />
-		</c:forEach>
+		<td id="mainObjectiveImageCell-3-0" class="mainObjectiveImageColumn-0" />
+		
+		<td id="mainObjectiveImageCell-3-1" class="mainObjectiveImageColumn-1 cardMoralTurn">
+			<div id="divMoralNumber">${mainObjective.difficultyNormal.moral}</div>
+		</td>
+		
+		<td id="mainObjectiveImageCell-3-2" class="mainObjectiveImageColumn-2" />
 	</tr>
 	
 	<!-- Ligne 4 : Nombre de tour --> 
 	<tr id="mainObjectiveImageLine-4">
-		<c:forEach var = "col" begin = "0" end = "2">
-			<td id="mainObjectiveImageCell-4-${col}" class="mainObjectiveImageColumn-${col}" />
-		</c:forEach>
+		<td id="mainObjectiveImageCell-4-0" class="mainObjectiveImageColumn-0" />
+		
+		<td id="mainObjectiveImageCell-4-1" class="mainObjectiveImageColumn-1 cardMoralTurn">
+			<div id="divTurnNumber">${mainObjective.difficultyNormal.numberTurn}</div>
+		</td>
+		
+		<td id="mainObjectiveImageCell-4-2" class="mainObjectiveImageColumn-2" />
 	</tr>
 	
 	<!-- Ligne 5 : Règles additionnelles --> 
 	<tr id="mainObjectiveImageLine-5">
-		<c:forEach var = "col" begin = "0" end = "2">
-			<td id="mainObjectiveImageCell-5-${col}" class="mainObjectiveImageColumn-${col}" />
-		</c:forEach>
+		<td id="mainObjectiveImageCell-5-0" class="mainObjectiveImageColumn-0" />
+		
+		<td id="mainObjectiveImageCell-5-1" class="mainObjectiveImageColumn-1 cardText">
+			<div id="divAddRuleText">${mainObjective.additionalRule.text} </div>
+		</td>
+		
+		<td id="mainObjectiveImageCell-5-2" class="mainObjectiveImageColumn-2" />
 	</tr>
 	
 	<!-- Ligne 6 : Victoire (titre) --> 

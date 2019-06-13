@@ -7,7 +7,14 @@
 
 /* Card moral and number of turn */
 @font-face {
-  font-family: 'Ingleby';
+  font-family: 'Ingleby-italic';
   font-display: swap;
   src: url('../font/ingleby/Ingleby_italic.ttf') format('truetype');
+}
+
+/* Card text */
+@font-face {
+  font-family: 'Ingleby-bold';
+  font-display: swap;
+  src: url('../font/ingleby/Ingleby_bold.ttf') format('truetype');
 }
