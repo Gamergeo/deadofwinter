@@ -48,7 +48,7 @@
 					
 					<div class="cardTurn">COMPTEUR  DE MANCHES : ${mainObjective.difficultyNormal.numberTurn}</div>
 					
-					<c:forEach  var="additionalRulePart" items="${mainObjective.additionalRuleText}">
+					<c:forEach  var="additionalRulePart" items="${mainObjective.normalAdditionalRules}">
 						
 						<!--  Interline -->
 						<c:if test="${empty additionalRulePart}">
@@ -74,7 +74,7 @@
 			
 					<div class="cardSetUpLabel">Victoire</div>
 			
-					<c:forEach  var="victoryPart" items="${mainObjective.victoryText}">
+					<c:forEach  var="victoryPart" items="${mainObjective.normalVictoryText}">
 						
 						<!--  Interline -->
 						<c:if test="${empty victoryPart}">
@@ -100,7 +100,7 @@
 		
 				<div class="cardSetUpLabel">Duree</div>
 				
-				<div class="cardMoral">${mainObjective.time}</div>
+				<div class="cardMoral">${mainObjective.time.text}</div>
 			
 			</td>
 	</tr>

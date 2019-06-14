@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.project.deadofwinter.business.SearchService;
 import com.project.deadofwinter.model.MainObjective;
 import com.project.deadofwinter.model.Search;
+import com.project.deadofwinter.technical.exception.ProjectException;
 
 @RequestMapping
 @Controller
@@ -32,7 +33,7 @@ public class StartAction extends AbstractAction {
 	
 	@PostMapping(value="/anewdawn.do")
 	public ModelAndView search(@ModelAttribute("search")Search search, 
-		      BindingResult result, ModelMap model) {
+		      BindingResult result, ModelMap model) throws ProjectException {
 
 		MainObjective mainObjective = searchService.search(search.isOriginal(), search.isExtension(), search.isCustom());
 		

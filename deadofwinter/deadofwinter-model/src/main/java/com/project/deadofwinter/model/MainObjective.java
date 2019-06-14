@@ -1,9 +1,13 @@
 package com.project.deadofwinter.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,6 +19,9 @@ import org.springframework.util.StringUtils;
 
 import com.project.deadofwinter.model.constant.BaseColumnName;
 import com.project.deadofwinter.model.constant.BaseTableName;
+import com.project.deadofwinter.model.constant.DifficultyLevel;
+import com.project.deadofwinter.model.constant.TimeName;
+import com.project.deadofwinter.technical.exception.ProjectException;
 
 @Entity(name=BaseTableName.TABLE_NAME_MAIN_OBJECTIVE)
 @Table(name=BaseTableName.TABLE_NAME_MAIN_OBJECTIVE)
@@ -55,8 +62,9 @@ public class MainObjective implements Serializable {
 	@Column(name=BaseColumnName.COLUMN_MAINOBJECTIVE_CUSTOM)
 	protected boolean custom;
 	
+	@Enumerated
 	@Column(name=BaseColumnName.COLUMN_MAINOBJECTIVE_TIME)
-	protected int time;
+	protected TimeName time;
 
 	public int getId() {
 		return id;
@@ -134,51 +142,68 @@ public class MainObjective implements Serializable {
 		this.difficultyHard = difficultyHard;
 	}
 	
-	/**
-	 * @return a list of additional rule(s), each element means one sentence
-	 */
-	public String[] getAdditionalRuleText() {
-		return StringUtils.delimitedListToStringArray(getAdditionalRule().getText(), "\\n");
+	public TimeName getTime() {
+		return time;
 	}
 	
-	private String getNormalAdditionalRuleText() {
-		String initial = getAdditionalRule().getText();
+	public void setTime(TimeName time) {
+		this.time = time;
+	}
+	
+	/**
+	 * Used for display.
+	 * @return an array of additional rule(s), each element means one sentence. 
+	 * @throws ProjectException 
+	 */
+	public List<String> getNormalAdditionalRules() throws ProjectException {
+		return replaceTextWithDifficultyNumbers(getAdditionalRule(), getDifficultyNormal());
+	}
+	
+	
+	/**
+	 * @return a list of additional rule(s), each element means one sentence
+	 * @throws ProjectException 
+	 */
+	public List<String> getNormalVictoryText() throws ProjectException {		
+		return replaceTextWithDifficultyNumbers(getVictory(), getDifficultyNormal());
+	}
+	
+	/**
+	 * @param description concerned description (numberToReplace)
+	 * @param difficulty concerned difficulty (replacingNumbers)
+	 * @return an array, each element means one line with numbers replaced
+	 */
+	private List<String> replaceTextWithDifficultyNumbers(Description description, Difficulty difficulty) throws ProjectException {
+		List<String> text =  description.getLines();
 		String toReplace;
+		boolean replacementDone = false;
 		
-		for (int i = 1; i <= getAdditionalRule().getNumberToReplace(); i++) {
+		for (int i = 1; i <= description.getNumberToReplace(); i++) {
 
+			replacementDone = false;
 			toReplace = "{" + i + "}";
-			if (!initial.contains(toReplace)) {
-				throw new RuntimeException();
+			
+			// On verifie pour chaque ligne du tableau
+			for (int lineIndex = 0; lineIndex < text.size() && !replacementDone; lineIndex++) {
+				
+				// Si l'élément à remplacer est dans cette ligne, on le remplace et indique que le remplacement est fait
+				if (text.get(lineIndex).contains(toReplace)) {
+					
+					// On remplace la ligne avec le nombre correspondant
+					String replacedLine = text.get(lineIndex).replace(toReplace, difficulty.getReplacingNumber(description.getType(), i)); 
+					
+					text.remove(lineIndex);
+					text.add(lineIndex, replacedLine);
+					replacementDone = true;
+				}
 			}
 			
-			initial = initial.replace(toReplace, "");
-
+			// Si le remplacement pour cet élément n'a pas été trouvé dans le tableau, alors c'est un problème
+			if (!replacementDone) {
+				throw new ProjectException("The text doesn't containt the {" + i + "} string");
+			}
 		}
-			
-		return initial;
-	}
 		
-	
-	
-	/**
-	 * @return a list of additional rule(s), each element means one sentence
-	 */
-	public String[] getVictoryText() {		
-		return StringUtils.delimitedListToStringArray(getVictory().getText(), "\\n");
-	}
-	
-	public String getTime() {
-		switch (time) {
-		case 1:
-			return "COURTE";
-		case 2:
-			return "MOYENNE";
-		case 3:
-			return "LONGUE";
-
-		default:
-			return null;
-		} 
+		return text;
 	}
 }

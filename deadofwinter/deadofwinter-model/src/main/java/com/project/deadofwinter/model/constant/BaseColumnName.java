@@ -28,6 +28,8 @@ public class BaseColumnName {
 	
 	public final static String COLUMN_DESCRIPTION_NUMBERTOREPLACE = "numberToReplace";
 	
+	public final static String COLUMN_DESCRIPTION_TYPE = "type";
+	
 	public final static String COLUMN_DIFFICULTY_ID = "idDIfficulty";
 	
 	public final static String COLUMN_DIFFICULTY_NUMBERS_VICTORY = "numbersVictory";

@@ -14,6 +14,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.project.deadofwinter.technical.exception.ProjectException;
+
 
 public abstract class AbstractDAO<T> implements IDao<T>{
 
@@ -41,10 +43,10 @@ public abstract class AbstractDAO<T> implements IDao<T>{
 		return dataSource.getConnection();
 	}
 	
-	protected DataSource getDataSource() {
+	protected DataSource getDataSource() throws ProjectException {
 		
 		if (dataSource == null) {
-			throw new RuntimeException("dataSource is not correctly setted");
+			throw new ProjectException("dataSource is not correctly setted");
 		}
 		
 		return dataSource;

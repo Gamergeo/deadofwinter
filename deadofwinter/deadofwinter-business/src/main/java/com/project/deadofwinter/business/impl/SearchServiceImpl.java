@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.project.deadofwinter.business.SearchService;
 import com.project.deadofwinter.model.MainObjective;
 import com.project.deadofwinter.persistance.impl.MainObjectiveDao;
+import com.project.deadofwinter.technical.exception.ProjectException;
 
 @Service("searchService")
 public class SearchServiceImpl implements SearchService {
@@ -19,12 +20,12 @@ public class SearchServiceImpl implements SearchService {
 
 	@Override
 	@Transactional
-	public MainObjective search(boolean isOriginal, boolean isExtension, boolean isCustom) {
+	public MainObjective search(boolean isOriginal, boolean isExtension, boolean isCustom) throws ProjectException {
 		
 		List<MainObjective> mainObjectives = mainObjectiveDao.findAll(isOriginal, isExtension, isCustom);
 		
 		if (mainObjectives.isEmpty()) {
-			throw new RuntimeException("No main objective found");
+			throw new ProjectException("No main objective found");
 		}
 		
 		if (mainObjectives.size() == 1) {
