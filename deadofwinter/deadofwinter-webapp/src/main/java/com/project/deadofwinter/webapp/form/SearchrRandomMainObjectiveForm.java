@@ -1,9 +1,9 @@
-package com.project.deadofwinter.model;
+package com.project.deadofwinter.webapp.form;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class Search {
+public class SearchrRandomMainObjectiveForm {
 	
 	private boolean hard;
 	

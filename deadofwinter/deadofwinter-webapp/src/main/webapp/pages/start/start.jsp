@@ -6,7 +6,7 @@
 
 	<h2>Voici l'histoire de votre mort...</h2>
 
-	<c:url var="formUrl" value="/anewdawn.do"/>
+	<c:url var="formUrl" value="/mainObjective/anewdawn.do"/>
 	<form:form action="${formUrl}" method="post" modelAttribute="search">
 		<form:label path="hard">Difficile ?</form:label>
 		<form:checkbox path="hard" />
@@ -27,6 +27,12 @@
 		
 		<input type="submit" value="Allons-y..." />
 	</form:form>
+	
+	<div>
+		<c:url var="editUrl" value="/mainObjective/displayEdit.do"/>
+		<a href="${editUrl}">Add a new main objective</a> 
+	
+	</div>
 
 	<h2>${message}</h2>
 </body>
