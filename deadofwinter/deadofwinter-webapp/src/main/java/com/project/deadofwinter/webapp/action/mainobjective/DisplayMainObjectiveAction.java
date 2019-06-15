@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.deadofwinter.business.SearchService;
+import com.project.deadofwinter.model.Description;
+import com.project.deadofwinter.model.Difficulty;
 import com.project.deadofwinter.model.MainObjective;
 import com.project.deadofwinter.technical.exception.ProjectException;
 import com.project.deadofwinter.webapp.action.AbstractAction;
@@ -39,6 +41,10 @@ public class DisplayMainObjectiveAction extends AbstractAction {
 	public ModelAndView displayEdit(@ModelAttribute("id")String id) {
 
 		MainObjective mainObjective = new MainObjective();
+		
+		mainObjective.setDifficultyNormal(new Difficulty());
+		mainObjective.setAdditionalRule(new Description());
+		mainObjective.setVictory(new Description());
 		
 		if (StringUtils.isNotEmpty(id)) {
 			mainObjective.setName(id);

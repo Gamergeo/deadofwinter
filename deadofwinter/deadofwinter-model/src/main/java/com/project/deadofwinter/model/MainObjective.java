@@ -1,8 +1,6 @@
 package com.project.deadofwinter.model;
 
 import java.io.Serializable;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -15,11 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.springframework.util.StringUtils;
-
 import com.project.deadofwinter.model.constant.BaseColumnName;
 import com.project.deadofwinter.model.constant.BaseTableName;
-import com.project.deadofwinter.model.constant.DifficultyLevel;
 import com.project.deadofwinter.model.constant.TimeName;
 import com.project.deadofwinter.technical.exception.ProjectException;
 

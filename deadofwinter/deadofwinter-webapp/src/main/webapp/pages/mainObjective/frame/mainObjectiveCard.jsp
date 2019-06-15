@@ -55,7 +55,7 @@
 							<div class="cardInterline"></div>
 						</c:if>
 						<c:if test="${not empty additionalRulePart}">
-							<div class="cardText">${additionalRulePart}</div>
+							<div class="cardText cardLineSize">${additionalRulePart}</div>
 						</c:if>
 						
 					</c:forEach>

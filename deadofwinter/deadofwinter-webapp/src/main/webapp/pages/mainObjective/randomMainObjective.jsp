@@ -2,9 +2,9 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 
-<body>	
-	<jsp:include page="frame/mainObjectiveCard.jsp" />
-	
-	<br/>
-</body>
+	<body>	
+		<jsp:include page="frame/mainObjectiveCard.jsp" />
+		
+		<br/>
+	</body>
 </html>
