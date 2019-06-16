@@ -1,4 +1,4 @@
-package com.project.deadofwinter.business.impl;
+package com.project.deadofwinter.business.mainobjective.impl;
 
 import java.util.List;
 import java.util.Random;
@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.project.deadofwinter.business.SearchService;
+import com.project.deadofwinter.business.mainobjective.SearchMainObjectiveService;
 import com.project.deadofwinter.model.MainObjective;
 import com.project.deadofwinter.persistance.impl.MainObjectiveDao;
 import com.project.deadofwinter.technical.exception.ProjectException;
 
-@Service("searchService")
-public class SearchServiceImpl implements SearchService {
+@Service("searchMainObjectiveService")
+public class SearchMainObjectiveServiceImpl implements SearchMainObjectiveService {
 	
 	@Autowired
 	private MainObjectiveDao mainObjectiveDao;

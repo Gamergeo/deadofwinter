@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.project.deadofwinter.business.SearchService;
+import com.project.deadofwinter.business.mainobjective.SearchMainObjectiveService;
 import com.project.deadofwinter.model.Description;
 import com.project.deadofwinter.model.Difficulty;
 import com.project.deadofwinter.model.MainObjective;
@@ -26,7 +26,7 @@ public class DisplayMainObjectiveAction extends AbstractAction {
 	private static final long serialVersionUID = -253903055924750467L;
 
 	@Autowired
-	private SearchService searchService;
+	private SearchMainObjectiveService searchService;
 	
 	@PostMapping("anewdawn")
 	public ModelAndView displayView(@ModelAttribute("search")SearchrRandomMainObjectiveForm search, 
@@ -53,11 +53,11 @@ public class DisplayMainObjectiveAction extends AbstractAction {
 		return new ModelAndView("mainObjective/displayEditMainObjective", "mainObjective", mainObjective);
 	}
 
-	public SearchService getSearchService() {
+	public SearchMainObjectiveService getSearchService() {
 		return searchService;
 	}
 
-	public void setSearchService(SearchService searchService) {
+	public void setSearchService(SearchMainObjectiveService searchService) {
 		this.searchService = searchService;
 	}
 
