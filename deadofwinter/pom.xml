@@ -11,7 +11,6 @@
 
 	<properties>
 		<revision>0.1</revision>
-		<deadofwinter.version>1.0-SNAPSHOT</deadofwinter.version>
 		<java.version>10</java.version>
 		<log4j.version>2.11.1</log4j.version>
 		<servlet.version>4.0.1</servlet.version>
@@ -62,22 +61,22 @@
 			<dependency>
 				<groupId>com.project</groupId>
 				<artifactId>deadofwinter-persistance</artifactId>
-				<version>${deadofwinter.version}</version>
+				<version>${revision}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.project</groupId>
 				<artifactId>deadofwinter-model</artifactId>
-				<version>${deadofwinter.version}</version>
+				<version>${revision}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.project</groupId>
 				<artifactId>deadofwinter-business</artifactId>
-				<version>${deadofwinter.version}</version>
+				<version>${revision}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.project</groupId>
 				<artifactId>deadofwinter-technical</artifactId>
-				<version>${deadofwinter.version}</version>
+				<version>${revision}</version>
 			</dependency>
 
 			<!-- java servlet -->

@@ -3,8 +3,9 @@
 
 <html>
 	<head>
-			<%@include file="/pages/header.jsp" %>
+		<%@include file="/pages/header.jsp" %>
 		
+		<!-- CSS Import and Definitions -->
 		<c:url var="cssSizeUrl" value="/css/mainObjectiveCard.css" />
 		<link href="${cssSizeUrl}" rel="stylesheet" media="all" type="text/css">
 		
@@ -12,10 +13,13 @@
 		<link href="${cssfontUrl}" rel="stylesheet" media="all" type="text/css">
 		
 		<style type="text/css" media="screen">
-		body {
-			background-color: black;
-		}
+			body {
+				background-color: black;
+			}
 		</style>
+		
+		<!-- JS Import -->
+		<script src='/js/mainObjective/displayEdit.js'></script>
 	</head>
 
 	<body>
