@@ -10,7 +10,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<revision>1.0-SNAPSHOT</revision>
+		<revision>0.1</revision>
 		<deadofwinter.version>1.0-SNAPSHOT</deadofwinter.version>
 		<java.version>10</java.version>
 		<log4j.version>2.11.1</log4j.version>
