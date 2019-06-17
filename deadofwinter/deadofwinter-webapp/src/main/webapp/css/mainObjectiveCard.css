@@ -5,7 +5,7 @@
 	vertical-align: bottom;
 	font-size: 44px;
 	color: rgba(0, 0, 0, 0.7);
- 	font-family: "Headline";
+	font-family: "Headline";
 }
 
 .cardSetUpLabel {
@@ -14,23 +14,23 @@
 	vertical-align: bottom;
 	font-size: 34px;
 	color: rgba(0, 0, 0, 0.7);
- 	font-family: "Headline";
+	font-family: "Headline";
 }
 
 .cardMoral {
-	height: 28px; 
+	height: 28px;
 	text-align: center;
 	color: rgba(0, 0, 0, 0.7);
 	font-size: 22px;
- 	font-family: "Ingleby-italic";
+	font-family: "Ingleby-italic";
 }
 
 .cardTurn {
-	height: 32px; 
+	height: 32px;
 	text-align: center;
 	color: rgba(0, 0, 0, 0.7);
 	font-size: 22px;
- 	font-family: "Ingleby-italic";
+	font-family: "Ingleby-italic";
 }
 
 .cardLineSize {
@@ -41,16 +41,16 @@
 	text-align: center;
 	color: rgba(0, 0, 0, 0.5);
 	font-size: 22px;
- 	font-family: "Ingleby-bold";
+	font-family: "Ingleby-bold";
 }
 
 .cardInterline {
-	height: 10px; 
+	height: 10px;
 }
 
 .cardInput {
 	margin-top: 0;
-  background: transparent;
+	background: transparent;
 	border: none;
 }
 
@@ -62,73 +62,87 @@ div.divBlockForInput {
 
 /* Size of card table */
 table#cardTable {
-   margin-left:auto; 
-   margin-right:auto;
+	margin-left: auto;
+	margin-right: auto;
 	width: 579px;
+}
+
+/* Size of card table */
+table#cardTableEdit {
+	margin-left: auto;
+	margin-right: auto;
 }
 
 /* Define size for each card table line */
 tr#mainObjectiveCardLine-1 {
-	height:71px;
+	height: 71px;
 }
 
 tr#mainObjectiveCardLine-2 {
-	height:39px;
+	height: 39px;
 }
 
 tr#mainObjectiveCardLine-3 {
-	height:25px;
+	height: 25px;
 }
 
 tr#mainObjectiveCardLine-4 {
-	height:347px;
+	height: 347px;
 }
 
 tr#mainObjectiveCardLine-5 {
-	height:25px;
+	height: 25px;
 }
 
 tr#mainObjectiveCardLine-6 {
-	height:152px;
+	height: 152px;
 }
 
 tr#mainObjectiveCardLine-7 {
-	height:24px;
+	height: 24px;
 }
 
 tr#mainObjectiveCardLine-8 {
-	height:117px;
+	height: 117px;
 }
 
 /* Define background for each card table cell */
 td#mainObjectiveCardCell-1 {
+	background-repeat: no-repeat;
 	background-image: url(../images/card_template/Template-1.png);
 }
 
 td#mainObjectiveCardCell-2 {
+	background-repeat: no-repeat;
 	background-image: url(../images/card_template/Template-2.png);
 }
 
 td#mainObjectiveCardCell-3 {
+	background-repeat: no-repeat;
 	background-image: url(../images/card_template/Template-3.png);
 }
 
 td#mainObjectiveCardCell-4 {
+	background-repeat: no-repeat;
 	background-image: url(../images/card_template/Template-4.png);
 }
 
 td#mainObjectiveCardCell-5 {
+	background-repeat: no-repeat;
 	background-image: url(../images/card_template/Template-5.png);
 }
 
 td#mainObjectiveCardCell-6 {
+	background-repeat: no-repeat;
 	background-image: url(../images/card_template/Template-6.png);
 }
 
 td#mainObjectiveCardCell-7 {
+	background-repeat: no-repeat;
 	background-image: url(../images/card_template/Template-7.png);
 }
 
 td#mainObjectiveCardCell-8 {
+	background-repeat: no-repeat;
 	background-image: url(../images/card_template/Template-8.png);
 }

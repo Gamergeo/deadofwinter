@@ -17,6 +17,7 @@ import com.project.deadofwinter.model.constant.BaseColumnName;
 import com.project.deadofwinter.model.constant.BaseTableName;
 import com.project.deadofwinter.model.constant.TimeName;
 import com.project.deadofwinter.technical.exception.ProjectException;
+import com.project.deadofwinter.technical.util.ReplacingNumberUtil;
 
 @Entity(name=BaseTableName.TABLE_NAME_MAIN_OBJECTIVE)
 @Table(name=BaseTableName.TABLE_NAME_MAIN_OBJECTIVE)
@@ -169,36 +170,6 @@ public class MainObjective implements Serializable {
 	 * @return an array, each element means one line with numbers replaced
 	 */
 	private List<String> replaceTextWithDifficultyNumbers(Description description, Difficulty difficulty) throws ProjectException {
-		List<String> text =  description.getLines();
-		String toReplace;
-		boolean replacementDone = false;
-		
-		for (int i = 1; i <= description.getNumberToReplace(); i++) {
-
-			replacementDone = false;
-			toReplace = "{" + i + "}";
-			
-			// On verifie pour chaque ligne du tableau
-			for (int lineIndex = 0; lineIndex < text.size() && !replacementDone; lineIndex++) {
-				
-				// Si l'élément à remplacer est dans cette ligne, on le remplace et indique que le remplacement est fait
-				if (text.get(lineIndex).contains(toReplace)) {
-					
-					// On remplace la ligne avec le nombre correspondant
-					String replacedLine = text.get(lineIndex).replace(toReplace, difficulty.getReplacingNumber(description.getType(), i)); 
-					
-					text.remove(lineIndex);
-					text.add(lineIndex, replacedLine);
-					replacementDone = true;
-				}
-			}
-			
-			// Si le remplacement pour cet élément n'a pas été trouvé dans le tableau, alors c'est un problème
-			if (!replacementDone) {
-				throw new ProjectException("The text doesn't containt the {" + i + "} string");
-			}
-		}
-		
-		return text;
+		return ReplacingNumberUtil.replaceTextWithDifficultyNumbers(description.getLines(), difficulty.getReplacingNumber(description.getType()));
 	}
 }

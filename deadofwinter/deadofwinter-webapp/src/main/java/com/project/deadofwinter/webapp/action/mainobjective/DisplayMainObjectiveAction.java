@@ -16,6 +16,7 @@ import com.project.deadofwinter.model.Description;
 import com.project.deadofwinter.model.Difficulty;
 import com.project.deadofwinter.model.MainObjective;
 import com.project.deadofwinter.technical.exception.ProjectException;
+import com.project.deadofwinter.technical.util.ReplacingNumberUtil;
 import com.project.deadofwinter.webapp.action.AbstractAction;
 import com.project.deadofwinter.webapp.form.SearchrRandomMainObjectiveForm;
 
@@ -52,6 +53,15 @@ public class DisplayMainObjectiveAction extends AbstractAction {
 			
 		return new ModelAndView("mainObjective/displayEditMainObjective", "mainObjective", mainObjective);
 	}
+	
+	@GetMapping("ajaxNumberToReplace")
+	public ModelAndView ajaxNumberToReplace(@ModelAttribute("text")String text) {
+		ModelAndView modelAndView = new ModelAndView("mainObjective/frame/ajaxDisplayEditReplacedNumbers");
+		modelAndView.addObject("replacedNumberNumber", ReplacingNumberUtil.getReplacedNumberNumber(text));
+		
+		return modelAndView;
+	}
+	
 
 	public SearchMainObjectiveService getSearchService() {
 		return searchService;

@@ -1,11 +1,8 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ include file="/pages/headerOnlyMeta.jsp" %>
 	
-<c:url var="cssSizeUrl" value="/css/mainObjectiveCard.css"/>
-<link href="${cssSizeUrl}" rel="stylesheet" media="all" type="text/css">
-	
-<c:url var="cssfontUrl" value="/css/font.css"/>
-<link href="${cssfontUrl}" rel="stylesheet" media="all" type="text/css">
+<!-- CSS Import and Definitions -->
+<link href="<c:url value='/css/mainObjectiveCard.css' />" rel="stylesheet" media="all" type="text/css">
+<link href="<c:url value='/css/font.css' />" rel="stylesheet" media="all" type="text/css">
 
  <style type="text/css" media="screen">
 

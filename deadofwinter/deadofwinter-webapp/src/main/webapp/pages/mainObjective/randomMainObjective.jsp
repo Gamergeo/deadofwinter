@@ -3,7 +3,7 @@
 
 <html>
 	<head>
-		<%@include file="/pages/header.jsp" %>
+		<%@ include file="/pages/header.jsp" %>
 	</head>
 
 	<body>	

@@ -1,9 +1,6 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ page import="com.project.deadofwinter.model.constant.TimeName" %>
+<%@include file="/pages/headerOnlyMeta.jsp" %>
 
-<c:url var="cssResetUrl" value="/css/reset.css" />
-<link href="${cssResetUrl}" rel="stylesheet" media="all" type="text/css">
+<link href="<c:url value='/css/reset.css' />" rel="stylesheet" media="all" type="text/css">
 
-<c:url var="jqueryUrl" value="/webjars/jquery/3.4.1/jquery.min.js" />
-<script src="${jqueryUrl}"></script>
+<script src="<c:url value='/webjars/jquery/3.4.1/jquery.min.js' />"></script>
+<script src="<c:url value='/js/util.js'/>"></script>

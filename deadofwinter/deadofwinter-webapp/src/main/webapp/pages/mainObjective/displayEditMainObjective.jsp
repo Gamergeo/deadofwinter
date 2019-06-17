@@ -6,37 +6,30 @@
 		<%@include file="/pages/header.jsp" %>
 		
 		<!-- CSS Import and Definitions -->
-		<c:url var="cssSizeUrl" value="/css/mainObjectiveCard.css" />
-		<link href="${cssSizeUrl}" rel="stylesheet" media="all" type="text/css">
-		
-		<c:url var="cssfontUrl" value="/css/font.css" />
-		<link href="${cssfontUrl}" rel="stylesheet" media="all" type="text/css">
+    <link href="<c:url value='/css/mainObjectiveCard.css' />" rel="stylesheet" media="all" type="text/css">
+    <link href="<c:url value='/css/font.css' />" rel="stylesheet" media="all" type="text/css">
+    <link href="<c:url value='/css/mainObjectiveEdit.css' />" rel="stylesheet" media="all" type="text/css">
 		
 		<style type="text/css" media="screen">
 			body {
-				background-color: black;
+				background-color: red;
 			}
 		</style>
 		
 		<!-- JS Import -->
-		<script src='/js/mainObjective/displayEdit.js'></script>
+		<script src='<c:url value="/js/mainObjective/displayEdit.js" />'></script>
 	</head>
 
 	<body>
 	
-		<c:url var="formUrl" value="/mainObjective/save.do" />
-		<form:form action="${formUrl}" method="post"
-			modelAttribute="mainObjective">
-			<form:label path="name">Name</form:label>
-			<br />
-	
-			<table id="cardTable">
-	
+		<form:form action='<c:url value="/mainObjective/save.do" />' method="post" modelAttribute="mainObjective">
+			<table id="cardTableEdit">
+      
 				<!-- Line 1 : Header -->
 				<tr id="mainObjectiveCardLine-1">
 					<td id="mainObjectiveCardCell-1"></td>
 				</tr>
-	
+        
 				<!-- Line 2 : Title -->
 				<tr id="mainObjectiveCardLine-2">
 					<td id="mainObjectiveCardCell-2">
@@ -68,8 +61,11 @@
 						</div> 
 	
 						<div class="divBlockForInput">
-							<form:textarea rows="10" style="width:100%" class="cardText cardInput" path="additionalRule.text"/>
+							<form:textarea id="addRuleTextArea" rows="9" style="width:100%" class="cardText cardInput" path="additionalRule.text"/>
 						</div>
+            
+            <form:hidden id="replacingNumbers-addRule" path="difficultyNormal.replacingNumbersVictory"/>
+            <td id="replacingNumbersBlock-addRule" style="display: none;" />
 					</td>
 				</tr>
 				
@@ -85,9 +81,12 @@
 						<div class="cardSetUpLabel">Victoire</div>
 	
 						<div class="divBlockForInput">
-							<form:textarea rows="4" style="width:100%" class="cardText cardInput" path="victory.text"/>
+							<form:textarea id="victoryTextArea" rows="4" style="width:100%" class="cardText cardInput" path="victory.text"/>
 						</div>
 					</td>
+          
+          <form:hidden id="replacingNumbers-victory" path="difficultyNormal.replacingNumbersVictory"/>
+          <td id="replacingNumbersBlock-victory" style="display: none;" />
 				</tr>
 	
 				<!-- Line 7 : 3rd separation -->
@@ -107,7 +106,6 @@
 								<form:option value="<%=TimeName.MEDIUM%>"><%=TimeName.MEDIUM.getText()%></form:option>
 								<form:option value="<%=TimeName.LONG%>"><%=TimeName.LONG.getText()%></form:option>
 							</form:select>
-							${mainObjective.time.text}
 						</div>
 					</td>
 				</tr>

@@ -1,8 +1,5 @@
 package com.project.deadofwinter.model;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
@@ -12,9 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-
-import org.springframework.util.StringUtils;
 
 import com.project.deadofwinter.model.constant.BaseColumnName;
 import com.project.deadofwinter.model.constant.BaseTableName;
@@ -53,9 +47,6 @@ public class Difficulty {
 
 	@Column(name = BaseColumnName.COLUMN_DIFFICULTY_NUMBERTURN)
 	protected int numberTurn;
-	
-	@Transient
-	protected Map<DescriptionType, String[]> replacingNumbers = null;
 
 	public int getId() {
 		return id;
@@ -123,33 +114,21 @@ public class Difficulty {
 	
 	/**
 	 * @param type (type of description)
-	 * @param index (index : 1 for first number...)
-	 * @return the replacing number
+	 * @return replacing numbers
 	 * @throw Exception if number doesnt exist
 	 */
-	public String getReplacingNumber(DescriptionType type, int index) throws ProjectException {
-		
-		/* Initialisation mandatory if not done yet */
-		if (replacingNumbers == null) {
-			initReplacingNumbers();
-		}
-		
-		/* Problem : number doesn't exist ! */
-		if (replacingNumbers.get(type).length < index) {
-			throw new ProjectException("number doesnt exist");
-		}
-		
-		return replacingNumbers.get(type)[index-1];
-	}
+	public String getReplacingNumber(DescriptionType type) throws ProjectException {
 
-	/**
-	 * Init the map of replacing numbers
-	 */
-	private void initReplacingNumbers () {
-		replacingNumbers = new HashMap<DescriptionType, String[]>();
+		if (type.equals(DescriptionType.VICTORY)) {
+			return getReplacingNumbersVictory();
+			
+		} else if (type.equals(DescriptionType.ADDITIONAL_RULE)) {
+			return getReplacingNumbersAdditionalRule();
+			
+		} else if (type.equals(DescriptionType.DIFFICULTY_RULE)) {
+			return getReplacingNumbersDifficultyRule();
+		}
 		
-		replacingNumbers.put(DescriptionType.ADDITIONAL_RULE, StringUtils.delimitedListToStringArray(getReplacingNumbersAdditionalRule(), ","));
-		replacingNumbers.put(DescriptionType.VICTORY, StringUtils.delimitedListToStringArray(getReplacingNumbersVictory(), ","));
-		replacingNumbers.put(DescriptionType.DIFFICULTY_RULE, StringUtils.delimitedListToStringArray(getReplacingNumbersDifficultyRule(), ","));
+		throw new ProjectException(type.name() + " is not managed !");
 	}
 }
