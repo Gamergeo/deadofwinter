@@ -1,14 +1,13 @@
 <%@include file="/pages/headerOnlyMeta.jsp" %>
 
 <c:forEach var="replacedNumberIndex" begin="1" end="${replacedNumberNumber}">
-  <div>
-    {<c:out value="${replacedNumberIndex}" />} = 
-    <input type="text" size="1" id="replacingNumber-${replacedNumberIndex}" />
-  </div>
- 
+  {<c:out value="${replacedNumberIndex}" />}:  
+  <input type="text" class="replacingNumbersInput" size="2" id="replacingNumber-${type}-${replacedNumberIndex}" />
+  <br />
+  
   <script>
-  	$("#replacingNumber-${replacedNumberIndex}").change(function() {
-			
+  	$("#replacingNumber-${type}-${replacedNumberIndex}").change(function() {
+			actualiseReplacingNumbers("${type}");
 	  });
 	</script>
 </c:forEach>

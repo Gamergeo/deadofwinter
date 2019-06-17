@@ -1,0 +1,21 @@
+Chose à faire
+
+Version 0.2 : Ajout de carte fonctionnelles (interface)
+Version 0.3 : Gestion de l'edition difficile (interface)
+Version 0.4 : Ajout de cartes (back)
+Version 0.5 : Affichage : Mise en place de difficile / Gestion des {T}
+Version 0.6 : Liste de toutes les cartes
+Version 0.7 : Page d'accueil
+Version 0.8 : Edition de cartes
+Version 1.0 : Amélioration interface (musique)
+Version 1.1 : Poids
+Version 1.2 : Algorithme
+
+Difficile
+
+Page d'ajout / edition
+Page de toutes les cartes
+
+Algorithme ?
+Totally random mindfuck ?
+custom exceptuion

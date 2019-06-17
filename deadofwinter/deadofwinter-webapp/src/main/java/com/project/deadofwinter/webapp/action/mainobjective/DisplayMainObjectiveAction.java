@@ -55,9 +55,10 @@ public class DisplayMainObjectiveAction extends AbstractAction {
 	}
 	
 	@GetMapping("ajaxNumberToReplace")
-	public ModelAndView ajaxNumberToReplace(@ModelAttribute("text")String text) {
+	public ModelAndView ajaxNumberToReplace(@ModelAttribute("text")String text, @ModelAttribute("type")String type) {
 		ModelAndView modelAndView = new ModelAndView("mainObjective/frame/ajaxDisplayEditReplacedNumbers");
 		modelAndView.addObject("replacedNumberNumber", ReplacingNumberUtil.getReplacedNumberNumber(text));
+		modelAndView.addObject("type", type);
 		
 		return modelAndView;
 	}

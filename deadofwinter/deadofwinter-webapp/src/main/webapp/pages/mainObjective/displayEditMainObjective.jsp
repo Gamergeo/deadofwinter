@@ -63,10 +63,11 @@
 						<div class="divBlockForInput">
 							<form:textarea id="addRuleTextArea" rows="9" style="width:100%" class="cardText cardInput" path="additionalRule.text"/>
 						</div>
-            
-            <form:hidden id="replacingNumbers-addRule" path="difficultyNormal.replacingNumbersVictory"/>
-            <td id="replacingNumbersBlock-addRule" style="display: none;" />
 					</td>
+          
+          <c:set var="descriptionTypeAddRule" value="<%=DescriptionType.ADDITIONAL_RULE%>"/>
+          <form:hidden id="replacingNumbers-${descriptionTypeAddRule}" path="difficultyNormal.replacingNumbersAdditionalRule"/>
+          <td id="replacingNumbersBlock-${descriptionTypeAddRule}" class="replacingNumbersBlock" style="display: none;" />
 				</tr>
 				
 				<!-- Line 5 : 2nd separation -->
@@ -85,10 +86,11 @@
 						</div>
 					</td>
           
-          <form:hidden id="replacingNumbers-victory" path="difficultyNormal.replacingNumbersVictory"/>
-          <td id="replacingNumbersBlock-victory" style="display: none;" />
+          <c:set var="descriptionTypeVictory" value="<%=DescriptionType.VICTORY%>"/>
+          <form:hidden id='replacingNumbers-${descriptionTypeVictory}' path="difficultyNormal.replacingNumbersVictory"/>
+          <td id="replacingNumbersBlock-${descriptionTypeVictory}" class="replacingNumbersBlock" style="display: none;" />
 				</tr>
-	
+
 				<!-- Line 7 : 3rd separation -->
 				<tr id="mainObjectiveCardLine-7">
 					<td id="mainObjectiveCardCell-7"></td>

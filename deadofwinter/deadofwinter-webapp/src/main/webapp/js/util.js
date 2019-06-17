@@ -70,3 +70,10 @@ function defaultSuccess(data) {
 function isUndefined(variable) {
 	return typeof variable === 'undefined';
 }
+
+/**
+ * @returns true if the element exist in DOM
+ */
+function elementExist(element) {
+	 return element.length != 0;
+}
