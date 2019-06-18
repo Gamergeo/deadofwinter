@@ -1,0 +1,1 @@
+<jsp:include page="../../view/part/mainObjectiveCard-3.jsp" />

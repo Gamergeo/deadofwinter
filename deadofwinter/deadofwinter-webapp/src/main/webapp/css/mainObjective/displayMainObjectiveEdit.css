@@ -1,0 +1,19 @@
+/* 
+ * File for mainObjective/edit/displayEditMainObjective.jsp
+ */
+#otherInformations {
+	font-size: 30px;
+	font-family: Ingleby-bold;
+	padding-top: 20px;
+}
+
+#difficultyLabel {
+	text-align: right;
+	padding-right: 10px;
+	text-transform: capitalize;
+}
+
+.buttonTo {
+	font-size: 20px;
+	font-family: Ingleby-bold;
+}

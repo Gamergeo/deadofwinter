@@ -3,8 +3,6 @@ package com.project.deadofwinter.webapp.action.mainobjective;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,12 +28,11 @@ public class DisplayMainObjectiveAction extends AbstractAction {
 	private SearchMainObjectiveService searchService;
 	
 	@PostMapping("anewdawn")
-	public ModelAndView displayView(@ModelAttribute("search")SearchrRandomMainObjectiveForm search, 
-		      BindingResult result, ModelMap model) throws ProjectException {
+	public ModelAndView displayView(@ModelAttribute("search")SearchrRandomMainObjectiveForm search) throws ProjectException {
 
 		MainObjective mainObjective = searchService.search(search.isOriginal(), search.isExtension(), search.isCustom());
 		
-		return new ModelAndView("/mainObjective/randomMainObjective", "mainObjective", mainObjective);
+		return new ModelAndView("/mainObjective/view/displayViewMainObjective", "mainObjective", mainObjective);
 	}
 	
 	@GetMapping("displayEdit")
@@ -51,18 +48,30 @@ public class DisplayMainObjectiveAction extends AbstractAction {
 			mainObjective.setName(id);
 		}
 			
-		return new ModelAndView("mainObjective/displayEditMainObjective", "mainObjective", mainObjective);
+		return new ModelAndView("mainObjective/edit/displayEditMainObjective", "mainObjective", mainObjective);
 	}
 	
 	@GetMapping("ajaxNumberToReplace")
 	public ModelAndView ajaxNumberToReplace(@ModelAttribute("text")String text, @ModelAttribute("type")String type) {
-		ModelAndView modelAndView = new ModelAndView("mainObjective/frame/ajaxDisplayEditReplacedNumbers");
+		ModelAndView modelAndView = new ModelAndView("mainObjective/edit/ajaxDisplayEditReplacedNumbers");
 		modelAndView.addObject("replacedNumberNumber", ReplacingNumberUtil.getReplacedNumberNumber(text));
 		modelAndView.addObject("type", type);
 		
 		return modelAndView;
 	}
 	
+	@PostMapping("ajaxCardEdit")
+	public ModelAndView ajaxCardEdit(MainObjective mainObjective, @ModelAttribute("level") String level) throws ProjectException {
+		
+		if (StringUtils.isEmpty(level)) {
+			throw new ProjectException("Difficulty level is not set");
+		}
+
+		ModelAndView modelAndView = new ModelAndView("card/edit/editMainObjectiveCard", "mainObjective", mainObjective);
+		modelAndView.addObject("level", level);
+		
+		return modelAndView;
+	}
 
 	public SearchMainObjectiveService getSearchService() {
 		return searchService;

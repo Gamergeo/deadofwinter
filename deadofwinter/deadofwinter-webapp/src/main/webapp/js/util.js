@@ -9,25 +9,51 @@ function isEmptyOrBlank(string) {
 }
 
 /**
+ * Process a get ajax request
+ */
+function getAjaxRequest(url, onSuccess, params, onError) {
+	ajaxRequest(url, onSuccess, params, onError, "GET");
+}
+
+/**
+ * Process a post ajax request
+ */
+function getAjaxRequest(url, onSuccess, params, onError) {
+	ajaxRequest(url, onSuccess, params, onError, "POST");
+}
+
+/**
  * Process an ajax request
  * @param url url of ajax request
  * @param params
  * @param onSuccess function callback. Type onSucess(data)
  * @param onError function callback. Default error if not provided
  */
-function ajaxRequest(url, onSuccess, params, onError) {
+function ajaxRequest(url, onSuccess, params, onError, type) {
 	if (isUndefined(onError)) {
 		onError = defaultOnError;
+	}
+	
+	if (isUndefined(type)) {
+		type = "GET";
 	}
 	
 	$.ajax({
 		url: url,
 		data: params,
-		type: "GET",
+		type: type,
 		dataType : "html",
 		success: onSuccess,
 	    error: onError,
 	});
+}
+
+function getAjaxUpdateElement(elementToUpdate, url, params, onSuccess, onError) {
+	ajaxUpdateElement(elementToUpdate, url, params, onSuccess, onError, "GET");
+}
+	
+function postAjaxUpdateElement(elementToUpdate, url, params, onSuccess, onError) {
+	ajaxUpdateElement(elementToUpdate, url, params, onSuccess, onError, "POST");
 }
 
 /**
@@ -38,16 +64,23 @@ function ajaxRequest(url, onSuccess, params, onError) {
  * @param onSuccess function callback. Type onSucess(data, elementToUpdate)
  * @param onError function callback. Default error if not provided
  */
-function ajaxUpdateElement(elementToUpdate, url, params, onSuccess, onError) {
+function ajaxUpdateElement(elementToUpdate, url, params, onSuccess, onError, type) {
 	if (isUndefined(onError)) {
 		onError = defaultOnError;
 	}
 	
 	if (isUndefined(onSuccess)) {
-		defaultSuccess = defaultSuccess;
+		onSuccess = defaultSuccess;
 	}
 	
-	ajaxRequest(url, function(data) {elementToUpdate.html(data);onSuccess(data, elementToUpdate)}, params, onError);
+	ajaxRequest(
+			url, 
+			function(data) {
+				elementToUpdate.html(data);
+				onSuccess(data, elementToUpdate)}, 
+			params, 
+			onError,
+			type);
 }
 
 /**
@@ -60,7 +93,7 @@ function defaultOnError() {
 /**
  * Default success ajax callback function
  */
-function defaultSuccess(data) {
+function defaultSuccess(data, element) {
 	
 }
 

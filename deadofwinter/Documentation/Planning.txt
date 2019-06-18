@@ -2,6 +2,8 @@ Chose à faire
 
 Version 0.2 : Ajout de carte fonctionnelles (interface)
 Version 0.3 : Gestion de l'edition difficile (interface)
+	0.3.1 : Appel de la carte par Ajax
+	0.3.2 : Création page Difficile et appel par Ajex
 Version 0.4 : Ajout de cartes (back)
 Version 0.5 : Affichage : Mise en place de difficile / Gestion des {T}
 Version 0.6 : Liste de toutes les cartes
@@ -11,6 +13,11 @@ Version 1.0 : Amélioration interface (musique)
 Version 1.1 : Poids
 Version 1.2 : Algorithme
 
+
+Bug connus :
+
+- {1} {2} {3} {4} dans texte victory dans l'edition de carte
+
 Difficile
 
 Page d'ajout / edition
@@ -19,3 +26,12 @@ Page de toutes les cartes
 Algorithme ?
 Totally random mindfuck ?
 custom exceptuion
+
+Faire un menu ou un truc du genre ?
+
+En gros ya deux choix :
+ - Soit je force à utiliser ajaxForm, mais c'est pas obvious
+			Sérialisation tout ca
+ - Soit je me casse pas les couilles et je passe les champs, mais c'est plus relou
+ 
+ Faire du post pour ajax

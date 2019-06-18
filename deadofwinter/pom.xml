@@ -10,7 +10,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<revision>0.1.2</revision>
+		<revision>0.3.1</revision>
 		<java.version>10</java.version>
 		<log4j.version>2.11.1</log4j.version>
 		<servlet.version>4.0.1</servlet.version>
@@ -23,6 +23,7 @@
 		<jaxb.version>2.3.0</jaxb.version>
 		<jstl.version>1.2</jstl.version>			    
 		<jquery.version>3.4.1</jquery.version>
+		<jquery.form.version>4.2.2</jquery.form.version>
 	</properties>
 
 	<!-- Project Modules dependecy -->
@@ -163,6 +164,7 @@
 			    <artifactId>jquery</artifactId>
 			    <version>${jquery.version}</version>
 			</dependency>
+			
 		</dependencies>
 	</dependencyManagement>
 </project>

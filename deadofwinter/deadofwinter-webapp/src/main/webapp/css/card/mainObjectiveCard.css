@@ -64,13 +64,6 @@ div.divBlockForInput {
 table#cardTable {
 	margin-left: auto;
 	margin-right: auto;
-	width: 579px;
-}
-
-/* Size of card table */
-table#cardTableEdit {
-	margin-left: auto;
-	margin-right: auto;
 }
 
 /* Define size for each card table line */
@@ -83,7 +76,7 @@ tr#mainObjectiveCardLine-2 {
 }
 
 tr#mainObjectiveCardLine-3 {
-	height: 25px;
+	height: 24px;
 }
 
 tr#mainObjectiveCardLine-4 {
@@ -91,7 +84,7 @@ tr#mainObjectiveCardLine-4 {
 }
 
 tr#mainObjectiveCardLine-5 {
-	height: 25px;
+	height: 24px;
 }
 
 tr#mainObjectiveCardLine-6 {
@@ -109,40 +102,41 @@ tr#mainObjectiveCardLine-8 {
 /* Define background for each card table cell */
 td#mainObjectiveCardCell-1 {
 	background-repeat: no-repeat;
-	background-image: url(../images/card_template/Template-1.png);
+	background-image: url(../../images/card_template/Template-1.png);
+	width: 579px;
 }
 
 td#mainObjectiveCardCell-2 {
 	background-repeat: no-repeat;
-	background-image: url(../images/card_template/Template-2.png);
+	background-image: url(../../images/card_template/Template-2.png);
 }
 
 td#mainObjectiveCardCell-3 {
 	background-repeat: no-repeat;
-	background-image: url(../images/card_template/Template-3.png);
+	background-image: url(../../images/card_template/Template-3.png);
 }
 
 td#mainObjectiveCardCell-4 {
 	background-repeat: no-repeat;
-	background-image: url(../images/card_template/Template-4.png);
+	background-image: url(../../images/card_template/Template-4.png);
 }
 
 td#mainObjectiveCardCell-5 {
 	background-repeat: no-repeat;
-	background-image: url(../images/card_template/Template-5.png);
+	background-image: url(../../images/card_template/Template-5.png);
 }
 
 td#mainObjectiveCardCell-6 {
 	background-repeat: no-repeat;
-	background-image: url(../images/card_template/Template-6.png);
+	background-image: url(../../images/card_template/Template-6.png);
 }
 
 td#mainObjectiveCardCell-7 {
 	background-repeat: no-repeat;
-	background-image: url(../images/card_template/Template-7.png);
+	background-image: url(../../images/card_template/Template-7.png);
 }
 
 td#mainObjectiveCardCell-8 {
 	background-repeat: no-repeat;
-	background-image: url(../images/card_template/Template-8.png);
+	background-image: url(../../images/card_template/Template-8.png);
 }

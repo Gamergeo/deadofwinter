@@ -4,10 +4,17 @@
 <html>
 	<head>
 		<%@ include file="/pages/header.jsp" %>
+    
+    <style type="text/css" media="screen">
+  
+      body {
+        background-color: black;
+      }
+    </style>
 	</head>
 
 	<body>	
-		<jsp:include page="frame/mainObjectiveCard.jsp" />
+		<jsp:include page="../../card/view/mainObjectiveCard.jsp" />
 		
 		<br/>
 	</body>
