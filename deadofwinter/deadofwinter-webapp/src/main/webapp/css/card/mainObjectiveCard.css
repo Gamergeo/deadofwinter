@@ -1,11 +1,12 @@
 /* Colors and font settings for card display */
 .cardTitle {
-	height: 32px;
+	height: 37px;
 	text-align: center;
-	vertical-align: bottom;
-	font-size: 44px;
+	vertical-align: top;
+	font-size: 43px;
 	color: rgba(0, 0, 0, 0.7);
 	font-family: "Headline";
+	padding-bottom: 2px;
 }
 
 .cardSetUpLabel {

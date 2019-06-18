@@ -8,16 +8,37 @@
 
     <div class="cardMoral">
       MARQUEUR DE MORAL : 
-        <form:input size="1" class="cardMoral cardInput" path="difficultyNormal.moral" value="${mainObjective.difficultyNormal.moral}" />
+        
+        <c:if test="${isDifficultyNormal}">
+          <form:input size="1" class="cardMoral cardInput" path="difficultyNormal.moral" />
+          <form:hidden path="difficultyHard.moral"/>
+        </c:if>
+        <c:if test="${isDifficultyHard}">
+          <form:input size="1" class="cardMoral cardInput" path="difficultyHard.moral" />
+          <form:hidden path="difficultyNormal.moral" />
+        </c:if>
     </div>
     
     <div class="cardTurn">
       COMPTEUR DE MANCHES :
-        <form:input size="1" class="cardMoral cardInput" path="difficultyNormal.numberTurn" value="${mainObjective.difficultyNormal.numberTurn}" />
+        <c:if test="${isDifficultyNormal}">
+          <form:input size="1" class="cardMoral cardInput" path="difficultyNormal.numberTurn"/>
+          <form:hidden path="difficultyHard.numberTurn"/>
+        </c:if>
+        <c:if test="${isDifficultyHard}">
+          <form:input size="1" class="cardMoral cardInput" path="difficultyHard.numberTurn" />
+          <form:hidden path="difficultyNormal.numberTurn" />
+        </c:if>
     </div> 
 
     <div class="divBlockForInput">
-      <form:textarea id="addRuleTextArea" rows="9" style="width:100%" class="cardText cardInput" path="additionalRule.text"/>
+      <c:if test="${isDifficultyNormal}">
+        <form:textarea id="addRuleTextArea" rows="9" style="width:100%" class="cardText cardInput" path="additionalRule.text"/>
+      </c:if>
+      <c:if test="${isDifficultyHard}">
+        <div class="cardText">${mainObjective.additionalRule.text}</div>
+          <form:hidden path="additionalRule.text" />
+      </c:if>
     </div>
   </td>
   

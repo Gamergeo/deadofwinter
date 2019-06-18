@@ -13,6 +13,7 @@ import com.project.deadofwinter.business.mainobjective.SearchMainObjectiveServic
 import com.project.deadofwinter.model.Description;
 import com.project.deadofwinter.model.Difficulty;
 import com.project.deadofwinter.model.MainObjective;
+import com.project.deadofwinter.model.constant.DifficultyLevel;
 import com.project.deadofwinter.technical.exception.ProjectException;
 import com.project.deadofwinter.technical.util.ReplacingNumberUtil;
 import com.project.deadofwinter.webapp.action.AbstractAction;
@@ -61,14 +62,12 @@ public class DisplayMainObjectiveAction extends AbstractAction {
 	}
 	
 	@PostMapping("ajaxCardEdit")
-	public ModelAndView ajaxCardEdit(MainObjective mainObjective, @ModelAttribute("level") String level) throws ProjectException {
-		
-		if (StringUtils.isEmpty(level)) {
-			throw new ProjectException("Difficulty level is not set");
-		}
-
+	public ModelAndView ajaxCardEdit(MainObjective mainObjective, @ModelAttribute("level") String levelText) throws ProjectException {
 		ModelAndView modelAndView = new ModelAndView("card/edit/editMainObjectiveCard", "mainObjective", mainObjective);
-		modelAndView.addObject("level", level);
+		
+		DifficultyLevel level = DifficultyLevel.retrieve(levelText);
+		modelAndView.addObject("isDifficultyNormal", level.equals(DifficultyLevel.NORMAL));
+		modelAndView.addObject("isDifficultyHard", level.equals(DifficultyLevel.HARD));
 		
 		return modelAndView;
 	}

@@ -1,4 +1,4 @@
-<%@ include file="/pages/headerOnlyMeta.jsp" %>
+<%@include file="/pages/headerOnlyMeta.jsp" %>
 
 <!-- Line 6 : Victory conditions -->
 <tr id="mainObjectiveCardLine-6">
@@ -7,7 +7,13 @@
     <div class="cardSetUpLabel">Victoire</div>
 
     <div class="divBlockForInput">
-      <form:textarea id="victoryTextArea" rows="4" style="width:100%" class="cardText cardInput" path="victory.text"/>
+      <c:if test="${isDifficultyNormal}">
+        <form:textarea id="victoryTextArea" rows="4" style="width:100%" class="cardText cardInput" path="victory.text"/>
+      </c:if>
+      <c:if test="${isDifficultyHard}">
+        <div class="cardText">${mainObjective.victory.text}</div>
+        <form:hidden path="victory.text" />
+      </c:if>
     </div>
   </td>
   

@@ -15,6 +15,7 @@ import javax.persistence.Table;
 
 import com.project.deadofwinter.model.constant.BaseColumnName;
 import com.project.deadofwinter.model.constant.BaseTableName;
+import com.project.deadofwinter.model.constant.DifficultyLevel;
 import com.project.deadofwinter.model.constant.TimeName;
 import com.project.deadofwinter.technical.exception.ProjectException;
 import com.project.deadofwinter.technical.util.ReplacingNumberUtil;

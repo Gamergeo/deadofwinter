@@ -8,13 +8,6 @@
 <!-- JS Import -->
 <script src='<c:url value="/js/mainObjective/displayEditCard.js" />'></script>
 
-<c:set var="level" value="${level}"/>
-<c:set var="levelNormal" value="<%=DifficultyLevel.NORMAL.toString()%>"/>
-<c:set var="levelHard" value="<%=DifficultyLevel.HARD.toString()%>"/>
-
-<c:if test="${level==levelNormal}" var="isLevelNormal" scope="request"/>
-<c:if test="${level==levelHard}" var="isLevelHard" scope="request"/>
-
 <form:form action='<c:url value="/mainObjective/save.do" />' method="post" modelAttribute="mainObjective">
   <table id="cardTable">
   

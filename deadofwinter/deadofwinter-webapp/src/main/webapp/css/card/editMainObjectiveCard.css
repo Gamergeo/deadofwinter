@@ -1,3 +1,21 @@
+/* Colors and font settings for card display */
+.cardTitleEditInput {
+	height: 33px;
+	text-align: center;
+	vertical-align: bottom;
+	font-size: 43px;
+	color: rgba(0, 0, 0, 0.7);
+	font-family: "Headline";
+	width:100%;
+}
+
+.cardTitleEdit {
+	margin-left: auto;
+	margin-right: auto;
+	width:90%;
+	padding-top: 4px;
+}
+
 /* 
  * File for mainObjective/edit/card/editMainObjectiveCard.jsp
  */
