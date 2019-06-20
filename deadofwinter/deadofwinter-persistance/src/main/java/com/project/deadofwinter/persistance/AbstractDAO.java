@@ -58,7 +58,7 @@ public abstract class AbstractDAO<T> implements IDao<T>{
 	
 	@Override
     public void persist(T type) {
-        getCurrentSession().save(type);
+        getCurrentSession().persist(type);
     }
     
 	@Override

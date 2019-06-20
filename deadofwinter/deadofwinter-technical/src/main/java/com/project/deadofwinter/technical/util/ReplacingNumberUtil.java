@@ -1,5 +1,6 @@
 package com.project.deadofwinter.technical.util;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -84,5 +85,25 @@ public abstract class ReplacingNumberUtil {
 			
 			number++;
 		}
+	}
+
+	/**
+	 * @return number of replacing number in a string 
+	 */
+	public static int getReplcingdNumberNumber(String replacingNumbersString) {
+		return getReplacingNumberAsList(replacingNumbersString).size();
+	}
+	
+	/**
+	 * Return a string of replacing number to a list
+	 */
+	public static List<String> getReplacingNumberAsList(String replacingNumbersString) {
+		String[] array = StringUtils.split(replacingNumbersString, DeadOfWinterConstants.REPLACING_NUMBERS_SEPARATION);
+		
+		if (array == null) {
+			return new ArrayList<String>();
+		}
+		
+		return Arrays.asList(array);
 	}
 }

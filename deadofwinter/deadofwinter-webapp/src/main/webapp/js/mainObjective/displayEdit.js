@@ -1,24 +1,13 @@
-$(document).ready(function() {
-  
- 	$("#buttonToHard").click(function() {
- 		changeDifficulty(DIFFICULTY_LEVEL['HARD']);
- 	});
- 	
- 	$("#buttonToNormal").click(function() {
- 		changeDifficulty(DIFFICULTY_LEVEL['NORMAL']);
- 	});
-});
-
 /**
  * Change difficulty to level
  */
 function changeDifficulty(level) {
-	$('#difficultyLabel').text(level);
-	
 	if (level == DIFFICULTY_LEVEL['NORMAL']) {
+		$('#difficultyLabel').text("Normal");
 		$('#buttonToHard').show();
 		$('#buttonToNormal').hide();
 	} else if (level == DIFFICULTY_LEVEL['HARD']) {
+		$('#difficultyLabel').text("Difficile");
 		$('#buttonToHard').hide();
 		$('#buttonToNormal').show();		
 	}

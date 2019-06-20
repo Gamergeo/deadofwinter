@@ -9,6 +9,8 @@
 		<div class="cardMoral">MARQUEUR DE MORAL : ${mainObjective.difficultyNormal.moral}</div>
 		
 		<div class="cardTurn">COMPTEUR  DE MANCHES : ${mainObjective.difficultyNormal.numberTurn}</div>
+    
+    <div class="cardText cardLineSize">${additionalRulePart}</div>
 		
 		<c:forEach  var="additionalRulePart" items="${mainObjective.normalAdditionalRules}">
 			

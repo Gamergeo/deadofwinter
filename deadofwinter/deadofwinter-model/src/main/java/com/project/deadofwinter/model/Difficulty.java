@@ -1,5 +1,7 @@
 package com.project.deadofwinter.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
@@ -15,10 +17,13 @@ import com.project.deadofwinter.model.constant.BaseTableName;
 import com.project.deadofwinter.model.constant.DescriptionType;
 import com.project.deadofwinter.model.constant.DifficultyLevel;
 import com.project.deadofwinter.technical.exception.ProjectException;
+import com.project.deadofwinter.technical.util.ReplacingNumberUtil;
 
 @Entity(name = BaseTableName.TABLE_NAME_DIFFICULTY)
 @Table(name = BaseTableName.TABLE_NAME_DIFFICULTY)
-public class Difficulty {
+public class Difficulty implements ModelObject {
+
+	private static final long serialVersionUID = 4958678694202760537L;
 
 	@Id
 	@Column(name = BaseColumnName.COLUMN_DIFFICULTY_ID)
@@ -130,5 +135,42 @@ public class Difficulty {
 		}
 		
 		throw new ProjectException(type.name() + " is not managed !");
+	}
+
+	@Override
+	public void validate(List<String> errors) throws ProjectException {
+		
+		if (errors == null) {
+			throw new NullPointerException("object errors is null");
+		}
+		
+		if (getLevel() == null) {
+			throw new ProjectException("difficulty level is null");
+		}
+		
+		if (getMoral() == 0) {
+			errors.add("Moral must not be 0. Difficulty :" + getLevel().getText());
+		}
+		
+		if (getNumberTurn() == 0) {
+			errors.add("Number of turns must not be 0. Difficulty :" + getLevel().getText());
+		}
+		
+		// Validate if all replacing number are correctly set
+		validateReplacingNumber(errors, DescriptionType.ADDITIONAL_RULE);
+		validateReplacingNumber(errors, DescriptionType.VICTORY);
+	}
+	
+	
+	private void validateReplacingNumber(List<String> errors, DescriptionType type) throws ProjectException {
+		
+		for (String replacingNumber : ReplacingNumberUtil.getReplacingNumberAsList(getReplacingNumber(type))) {
+			
+			try {
+				Integer.valueOf(replacingNumber);
+			} catch (NumberFormatException e) {
+				errors.add("Replacing number " + replacingNumber + " in " + type + "is not a number");
+			}
+		}
 	}
 }

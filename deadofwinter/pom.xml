@@ -10,7 +10,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<revision>0.3.3</revision>
+		<revision>0.4.1</revision>
 		<java.version>10</java.version>
 		<log4j.version>2.11.1</log4j.version>
 		<servlet.version>4.0.1</servlet.version>

@@ -22,7 +22,7 @@ public class SearchMainObjectiveServiceImpl implements SearchMainObjectiveServic
 	@Transactional
 	public MainObjective search(boolean isOriginal, boolean isExtension, boolean isCustom) throws ProjectException {
 		
-		List<MainObjective> mainObjectives = mainObjectiveDao.findAll(isOriginal, isExtension, isCustom);
+		List<MainObjective> mainObjectives = mainObjectiveDao.findAll();
 		
 		if (mainObjectives.isEmpty()) {
 			throw new ProjectException("No main objective found");

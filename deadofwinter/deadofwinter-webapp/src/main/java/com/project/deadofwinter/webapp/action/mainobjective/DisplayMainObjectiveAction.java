@@ -1,6 +1,7 @@
 package com.project.deadofwinter.webapp.action.mainobjective;
 
-import org.apache.commons.lang3.StringUtils;
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.deadofwinter.business.mainobjective.SearchMainObjectiveService;
-import com.project.deadofwinter.model.Description;
-import com.project.deadofwinter.model.Difficulty;
 import com.project.deadofwinter.model.MainObjective;
 import com.project.deadofwinter.model.constant.DescriptionType;
 import com.project.deadofwinter.model.constant.DifficultyLevel;
@@ -38,24 +37,9 @@ public class DisplayMainObjectiveAction extends AbstractAction {
 	}
 	
 	@GetMapping("displayEdit")
-	public ModelAndView displayEdit(@ModelAttribute("id")String id) {
+	public ModelAndView displayEdit(@ModelAttribute("mainObjective") MainObjective mainObjective, @ModelAttribute("errors") ArrayList<String> errors) {
 
-		MainObjective mainObjective = new MainObjective();
-		
-		mainObjective.setDifficultyNormal(new Difficulty());
-		
-		Difficulty hard = new Difficulty();
-		hard.setMoral(0);
-		
-		mainObjective.setDifficultyHard(hard);
-		mainObjective.setAdditionalRule(new Description());
-		mainObjective.setVictory(new Description());
-		
-		if (StringUtils.isNotEmpty(id)) {
-			mainObjective.setName(id);
-		}
-
-		ModelAndView modelAndView = new ModelAndView("mainObjective/edit/displayEditMainObjective", "mainObjective", mainObjective);
+		ModelAndView modelAndView = new ModelAndView("mainObjective/edit/displayEditMainObjective", "mainObjective", new MainObjective());
 		modelAndView.addObject("isDifficultyNormal", true);
 		
 		return modelAndView;

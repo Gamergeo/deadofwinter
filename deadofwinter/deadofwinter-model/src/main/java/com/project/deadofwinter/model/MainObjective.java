@@ -1,8 +1,8 @@
 package com.project.deadofwinter.model;
 
-import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
@@ -13,15 +13,20 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.util.StringUtils;
+
 import com.project.deadofwinter.model.constant.BaseColumnName;
 import com.project.deadofwinter.model.constant.BaseTableName;
+import com.project.deadofwinter.model.constant.DescriptionType;
+import com.project.deadofwinter.model.constant.DifficultyLevel;
+import com.project.deadofwinter.model.constant.MainObjectiveType;
 import com.project.deadofwinter.model.constant.TimeName;
 import com.project.deadofwinter.technical.exception.ProjectException;
 import com.project.deadofwinter.technical.util.ReplacingNumberUtil;
 
 @Entity(name=BaseTableName.TABLE_NAME_MAIN_OBJECTIVE)
 @Table(name=BaseTableName.TABLE_NAME_MAIN_OBJECTIVE)
-public class MainObjective implements Serializable {
+public class MainObjective implements ModelObject {
 
 	private static final long serialVersionUID = -5709894870019664446L;
 	
@@ -33,34 +38,45 @@ public class MainObjective implements Serializable {
 	@Column(name=BaseColumnName.COLUMN_MAINOBJECTIVE_NAME)
 	protected String name;
 
-	@ManyToOne
+	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
 	@JoinColumn(name=BaseColumnName.COLUMN_MAINOBJECTIVE_VICTORY, referencedColumnName=BaseColumnName.COLUMN_DESCRIPTION_ID)
 	protected Description victory;
 
-	@ManyToOne
+	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
 	@JoinColumn(name=BaseColumnName.COLUMN_MAINOBJECTIVE_ADDRULE, referencedColumnName=BaseColumnName.COLUMN_DESCRIPTION_ID)
 	protected Description additionalRule;
 	
-	@ManyToOne
+	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
 	@JoinColumn(name=BaseColumnName.COLUMN_MAINOBJECTIVE_DIFFICULTY_NORMAL, referencedColumnName=BaseColumnName.COLUMN_DIFFICULTY_ID)
 	protected Difficulty difficultyNormal;
-	
-	@ManyToOne
+
+	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
 	@JoinColumn(name=BaseColumnName.COLUMN_MAINOBJECTIVE_DIFFICULTY_HARD, referencedColumnName=BaseColumnName.COLUMN_DIFFICULTY_ID)
 	protected Difficulty difficultyHard;
-
-	@Column(name=BaseColumnName.COLUMN_MAINOBJECTIVE_ORIGINAL)
-	protected boolean original;
-
-	@Column(name=BaseColumnName.COLUMN_MAINOBJECTIVE_EXTENSION)
-	protected boolean extension;
-
-	@Column(name=BaseColumnName.COLUMN_MAINOBJECTIVE_CUSTOM)
-	protected boolean custom;
+	
+	@Enumerated
+	@Column(name=BaseColumnName.COLUMN_MAINOBJECTIVE_TYPE)
+	protected MainObjectiveType type;
 	
 	@Enumerated
 	@Column(name=BaseColumnName.COLUMN_MAINOBJECTIVE_TIME)
 	protected TimeName time;
+	
+	public MainObjective() {
+		victory = new Description();
+		victory.setType(DescriptionType.VICTORY);
+		
+		additionalRule = new Description();
+		additionalRule.setType(DescriptionType.ADDITIONAL_RULE);
+		
+		difficultyNormal = new Difficulty();
+		difficultyNormal.setLevel(DifficultyLevel.NORMAL);
+		
+		difficultyHard = new Difficulty();
+		difficultyHard.setLevel(DifficultyLevel.HARD);
+		
+		type = MainObjectiveType.CUSTOM;
+	}
 
 	public int getId() {
 		return id;
@@ -94,28 +110,12 @@ public class MainObjective implements Serializable {
 		this.additionalRule = additionalRule;
 	}
 
-	public boolean isOriginal() {
-		return original;
+	public MainObjectiveType getType() {
+		return type;
 	}
 
-	public void setOriginal(boolean original) {
-		this.original = original;
-	}
-
-	public boolean isExtension() {
-		return extension;
-	}
-
-	public void setExtension(boolean extension) {
-		this.extension = extension;
-	}
-
-	public boolean isCustom() {
-		return custom;
-	}
-
-	public void setCustom(boolean custom) {
-		this.custom = custom;
+	public void setType(MainObjectiveType type) {
+		this.type = type;
 	}
 
 	public static long getSerialversionuid() {
@@ -171,5 +171,74 @@ public class MainObjective implements Serializable {
 	 */
 	private List<String> replaceTextWithDifficultyNumbers(Description description, Difficulty difficulty) throws ProjectException {
 		return ReplacingNumberUtil.replaceTextWithDifficultyNumbers(description.getLines(), difficulty.getReplacingNumber(description.getType()));
+	}
+	
+	/**
+	 * validate the main objective
+	 * @throws ProjectException 
+	 */
+	@Override
+	public void validate(List<String> errors) throws ProjectException {
+		
+		if (errors == null) {
+			throw new NullPointerException("object errors is null");
+		}
+		
+		if (StringUtils.isEmpty(getName())) {
+			errors.add("Name must not be empty");
+		}
+
+		if (getAdditionalRule() == null) {
+			throw new ProjectException("object additional rule is null");
+		}
+		
+		getAdditionalRule().validate(errors);
+		validateReplacedNumbers(errors, getAdditionalRule());
+		
+		if (getVictory() == null) {
+			throw new ProjectException("object victory is null");
+		}
+		
+		getVictory().validate(errors);
+		validateReplacedNumbers(errors, getVictory());
+		
+		if (getDifficultyNormal() == null) {
+			throw new ProjectException("object normal difficulty is null");
+		}
+		
+		getDifficultyNormal().validate(errors);
+		
+		if (getDifficultyHard() == null) {
+			throw new ProjectException("object hard difficulty is null");
+		}
+		
+		getDifficultyHard().validate(errors);
+		
+		if (getTime() == null) {
+			throw new ProjectException("object time is null");
+		}
+		
+		if (getType() == null) {
+			throw new ProjectException("object type is null");
+		}
+	}
+	
+	private void validateReplacedNumbers(List<String> errors, Description description) throws ProjectException {
+		validateReplacedNumbers(errors, description, getDifficultyNormal());
+		validateReplacedNumbers(errors, description, getDifficultyHard());
+	}
+	
+	/**
+	 * Validate if the number of replacing number is matching the number of replaced number
+	 * @throws ProjectException 
+	 */
+	private void validateReplacedNumbers(List<String> errors, Description description, Difficulty difficulty) throws ProjectException {
+		
+		// The number of replacing number should match the number of replacing numbers
+		int victoryReplacedNumberLength = ReplacingNumberUtil.getReplacedNumberNumber(description.getText());
+		
+		if (victoryReplacedNumberLength != ReplacingNumberUtil.getReplcingdNumberNumber(difficulty.getReplacingNumber(description.getType()))) {
+			errors.add("Incorrect number of replacing numbers for " + description.getType() + " and difficulty : " + difficulty.getLevel());
+		}
 	}
 }

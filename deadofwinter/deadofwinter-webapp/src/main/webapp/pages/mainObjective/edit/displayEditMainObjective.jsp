@@ -9,10 +9,29 @@
         
     <!-- JS Import -->
     <script src='<c:url value="/js/mainObjective/displayEdit.js" />'></script>
+    
+    
+    <script type="text/javascript">
+      $(document).ready(function() {
+        
+        $("#buttonToHard").click(function() {
+          changeDifficulty(DIFFICULTY_LEVEL['HARD']);
+        });
+        
+        $("#buttonToNormal").click(function() {
+          changeDifficulty(DIFFICULTY_LEVEL['NORMAL']);
+        });
+        
+        $("#Save").click(function() {
+        	$('form#mainObjective').submit();
+        });
+      });
+    </script>
+    
 		
 		<style type="text/css" media="screen">
 			body {
-				background-color: red;
+				background-color: blue;
 			}
 		</style>
 	</head>
@@ -27,13 +46,15 @@
         <td id="otherInformations" style="width:15%;">
           Difficulté : 
           <br />
-          <div id="difficultyLabel"></div>
+          <div id="difficultyLabel">Normal</div>
           <br />
           <button class="buttonTo" id="buttonToHard">Editer mode difficile</button>
           <button class="buttonTo" id="buttonToNormal" style="display:none;">Editer mode normal</button>
+          <br />
+          <br />
+          <button class="buttonTo" id="Save">Sauvegarder la carte</button>
         </td>
       </tr>
     </table>
-		<input type="submit" value="Save" />
 	</body>
 </html>

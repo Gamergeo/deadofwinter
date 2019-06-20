@@ -17,3 +17,8 @@
 	font-size: 20px;
 	font-family: Ingleby-bold;
 }
+
+#card {
+	vertical-align: top;
+	padding-top: 5px;
+}

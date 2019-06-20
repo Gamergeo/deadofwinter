@@ -47,3 +47,8 @@
 .hardNumbers {
 	color: red;
 }
+
+#errorMessage {
+	color: red;
+	font-size: 16px;	
+}

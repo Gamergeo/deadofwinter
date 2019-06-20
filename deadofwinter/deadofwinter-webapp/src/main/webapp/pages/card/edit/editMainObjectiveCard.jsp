@@ -36,8 +36,25 @@
   });
 </script>
 
-<form:form action='<c:url value="/mainObjective/save.do" />' method="post" modelAttribute="mainObjective">
+<c:url value="/mainObjective/save.do" var="urlSubmitForm"/>
+<form:form action='${urlSubmitForm}' method="post" modelAttribute="mainObjective">
   <table id="cardTable">
+  
+  
+    <c:if test="${not empty errors}">
+      <tr>
+        <td id="errorMessage">
+          THERE ARE ERRORS !
+        </td>
+      </tr>
+      <c:forEach var="error" items="${errors}">
+     	  <tr>
+          <td id="errorMessage">
+            ${error}
+          </td>
+        </tr>
+      </c:forEach>
+    </c:if>
   
     <!-- Line 1 : Header -->
     <jsp:include page="part/editMainObjectiveCard-1.jsp" />

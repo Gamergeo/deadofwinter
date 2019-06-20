@@ -14,11 +14,7 @@ public class BaseColumnName {
 	
 	public final static String COLUMN_MAINOBJECTIVE_DIFFICULTY_HARD = "idDifficultyHard";
 	
-	public final static String COLUMN_MAINOBJECTIVE_ORIGINAL = "original";
-	
-	public final static String COLUMN_MAINOBJECTIVE_EXTENSION = "extension";
-	
-	public final static String COLUMN_MAINOBJECTIVE_CUSTOM = "custom";
+	public final static String COLUMN_MAINOBJECTIVE_TYPE = "type";
 	
 	public final static String COLUMN_MAINOBJECTIVE_TIME = "time";
 	

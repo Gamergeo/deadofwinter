@@ -18,11 +18,14 @@ import org.springframework.util.StringUtils;
 import com.project.deadofwinter.model.constant.BaseColumnName;
 import com.project.deadofwinter.model.constant.BaseTableName;
 import com.project.deadofwinter.model.constant.DescriptionType;
+import com.project.deadofwinter.technical.exception.ProjectException;
 
 @Entity(name=BaseTableName.TABLE_NAME_DESCRIPTION)
 @Table(name=BaseTableName.TABLE_NAME_DESCRIPTION)
-public class Description {
+public class Description implements ModelObject {
 	
+	private static final long serialVersionUID = 104200127351405437L;
+
 	@Id
 	@Column(name=BaseColumnName.COLUMN_DESCRIPTION_ID)
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -84,5 +87,21 @@ public class Description {
 		}
 		
 		return new LinkedList<String>(lines);
+	}
+	
+	@Override
+	public void validate(List<String> errors) throws ProjectException {
+		
+		if (errors == null) {
+			throw new NullPointerException("object errors is null");
+		}
+		
+		if (getType() == null) {
+			throw new ProjectException("type is null");
+		}
+		
+		if (getType().equals(DescriptionType.VICTORY) && StringUtils.isEmpty(getText())) {
+			errors.add("Victory conditions must not be empty");
+		}
 	}
 }
