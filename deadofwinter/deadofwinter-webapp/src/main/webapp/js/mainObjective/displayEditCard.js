@@ -1,27 +1,13 @@
-$(document).ready(function() {
-  
-  	// On ajoute les evenements de change sur les textarea pour determiner le nombre de chiffre à remplacer
-  	$("#victoryTextArea").change(function() {
-  		updateReplacingNumberBlock($('#victoryTextArea').val(), DESCRIPTION_TYPE["VICTORY"]);
-  	});
-  
-  	// On ajoute les evenements de change sur les textarea pour determiner le nombre de chiffre à remplacer
-  	$("#addRuleTextArea").change(function() {
-  		updateReplacingNumberBlock($('#addRuleTextArea').val(), DESCRIPTION_TYPE["ADDITIONAL_RULE"]);
-  	});
-});
-
-
 /**
  * On update : we check if the string contains any special numbers to be replaced.
  * An ajax request is processed for that.
  */
-function updateReplacingNumberBlock(text, type) {
+function updateReplacingNumberBlock(text, type, difficulty) {
 	url = "/deadofwinter/mainObjective/ajaxNumberToReplace.do";
 	
 	var elementToReplace = getBlockElement(type);
 	
-	params = {'text':text, 'type': type}
+	params = {'text':text, 'type': type, 'difficulty': difficulty}
 	getAjaxUpdateElement(elementToReplace, url, params, onSuccess);
 }
 
@@ -46,34 +32,44 @@ function getBlockElement(type) {
 /**
  * @returns the hidden input element for a given type
  */
-function getInputElement(type) {
-	return $('#replacingNumbers-' + type);
+function getInputElement(type, difficulty) {
+	return $('#replacingNumbers-' + difficulty + '-' + type);
 }
 
-function actualiseReplacingNumbers(type) {
+/**
+ * Actualise the replacing numbers
+ */
+function actualiseReplacingNumbers(type, difficulty) {
 	var index = 1;
 	var replacingNumbers ='';
 	
 	while(true) {
 		 
-		 var replacingNumberElement = $("#replacingNumber-" + type + "-" + index);
+		 var replacingNumberElement = $("#replacingNumber-" + difficulty + "-" + type + "-" + index);
 		 
 		 // If element is not found, it doesnt exist. We set up the hidden field and stop the function
 		 if (!elementExist(replacingNumberElement)) {
-			 getInputElement(type).val(replacingNumbers);
+			 getInputElement(type, difficulty).val(replacingNumbers);
 			 return;
 		 }
 		 
 		 // We dont change the field if value is not set yet
-		 if (replacingNumberElement.val()) {
+		 if (index == 1) {
+			 replacingNumbers += replacingNumberElement.val();
 			 
-			 if (index == 1) {
-				 replacingNumbers += replacingNumberElement.val();
-				 
-			 } else {
-				 replacingNumbers += REPLACING_NUMBERS_SEPARATION + replacingNumberElement.val();
-			 }
+		 } else {
+			 replacingNumbers += REPLACING_NUMBERS_SEPARATION + replacingNumberElement.val();
 		 }
+		 
 		 index++;
 	}
+}
+
+/**
+ * @returns the actual replacing number for type, difficulty and index
+ */
+function getReplacingNumber(type, difficulty, index) {
+	var replacingNumbers = getInputElement(type, difficulty).val().split(REPLACING_NUMBERS_SEPARATION);
+	
+	return replacingNumbers[index - 1];
 }

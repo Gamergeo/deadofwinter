@@ -13,6 +13,7 @@ import com.project.deadofwinter.business.mainobjective.SearchMainObjectiveServic
 import com.project.deadofwinter.model.Description;
 import com.project.deadofwinter.model.Difficulty;
 import com.project.deadofwinter.model.MainObjective;
+import com.project.deadofwinter.model.constant.DescriptionType;
 import com.project.deadofwinter.model.constant.DifficultyLevel;
 import com.project.deadofwinter.technical.exception.ProjectException;
 import com.project.deadofwinter.technical.util.ReplacingNumberUtil;
@@ -42,30 +43,40 @@ public class DisplayMainObjectiveAction extends AbstractAction {
 		MainObjective mainObjective = new MainObjective();
 		
 		mainObjective.setDifficultyNormal(new Difficulty());
+		
+		Difficulty hard = new Difficulty();
+		hard.setMoral(0);
+		
+		mainObjective.setDifficultyHard(hard);
 		mainObjective.setAdditionalRule(new Description());
 		mainObjective.setVictory(new Description());
 		
 		if (StringUtils.isNotEmpty(id)) {
 			mainObjective.setName(id);
 		}
-			
-		return new ModelAndView("mainObjective/edit/displayEditMainObjective", "mainObjective", mainObjective);
+
+		ModelAndView modelAndView = new ModelAndView("mainObjective/edit/displayEditMainObjective", "mainObjective", mainObjective);
+		modelAndView.addObject("isDifficultyNormal", true);
+		
+		return modelAndView;
 	}
 	
 	@GetMapping("ajaxNumberToReplace")
-	public ModelAndView ajaxNumberToReplace(@ModelAttribute("text")String text, @ModelAttribute("type")String type) {
+	public ModelAndView ajaxNumberToReplace(@ModelAttribute("text")String text,
+											@ModelAttribute("type")DescriptionType descriptionType, 
+											@ModelAttribute("difficulty") DifficultyLevel difficultyLevel) {
 		ModelAndView modelAndView = new ModelAndView("mainObjective/edit/ajaxDisplayEditReplacedNumbers");
 		modelAndView.addObject("replacedNumberNumber", ReplacingNumberUtil.getReplacedNumberNumber(text));
-		modelAndView.addObject("type", type);
+		modelAndView.addObject("type", descriptionType);
+		modelAndView.addObject("difficulty", difficultyLevel);
 		
 		return modelAndView;
 	}
 	
 	@PostMapping("ajaxCardEdit")
-	public ModelAndView ajaxCardEdit(MainObjective mainObjective, @ModelAttribute("level") String levelText) throws ProjectException {
+	public ModelAndView ajaxCardEdit(MainObjective mainObjective, @ModelAttribute("level") DifficultyLevel level) throws ProjectException {
 		ModelAndView modelAndView = new ModelAndView("card/edit/editMainObjectiveCard", "mainObjective", mainObjective);
 		
-		DifficultyLevel level = DifficultyLevel.retrieve(levelText);
 		modelAndView.addObject("isDifficultyNormal", level.equals(DifficultyLevel.NORMAL));
 		modelAndView.addObject("isDifficultyHard", level.equals(DifficultyLevel.HARD));
 		

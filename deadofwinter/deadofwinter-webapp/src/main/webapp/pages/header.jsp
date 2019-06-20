@@ -15,9 +15,9 @@
 	}
 	
 	const DIFFICULTY_LEVEL = {
-			NORMAL:  "<%=DifficultyLevel.NORMAL.toString()%>",
-			HARD:    "<%=DifficultyLevel.HARD.toString()%>",
-			EXTREME: "<%=DifficultyLevel.EXTREME.toString()%>"
+			NORMAL:  "<%=DifficultyLevel.NORMAL%>",
+			HARD:    "<%=DifficultyLevel.HARD%>",
+			EXTREME: "<%=DifficultyLevel.EXTREME%>"
 		}
 	
 	const REPLACING_NUMBERS_SEPARATION = ",";

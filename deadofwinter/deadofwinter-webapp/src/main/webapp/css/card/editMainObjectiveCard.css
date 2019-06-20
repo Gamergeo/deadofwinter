@@ -39,3 +39,11 @@
 	padding-top: 105px;
 	vertical-align: top;
 }
+
+.normalNumbers {
+	color: green;
+}
+
+.hardNumbers {
+	color: red;
+}

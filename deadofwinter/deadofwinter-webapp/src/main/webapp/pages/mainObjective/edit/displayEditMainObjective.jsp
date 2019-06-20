@@ -21,7 +21,9 @@
   
     <table style="width:100%">
       <tr>
-        <td id="card" style="width:85%" />
+        <td id="card" style="width:85%">
+          <jsp:include page="../../card/edit/editMainObjectiveCard.jsp"/>
+        </td>
         <td id="otherInformations" style="width:15%;">
           Difficulté : 
           <br />

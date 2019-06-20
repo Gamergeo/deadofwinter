@@ -1,7 +1,5 @@
 $(document).ready(function() {
   
-	changeDifficulty(DIFFICULTY_LEVEL['NORMAL']);
-
  	$("#buttonToHard").click(function() {
  		changeDifficulty(DIFFICULTY_LEVEL['HARD']);
  	});

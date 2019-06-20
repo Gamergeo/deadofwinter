@@ -11,10 +11,12 @@
         
         <c:if test="${isDifficultyNormal}">
           <form:input size="1" class="cardMoral cardInput" path="difficultyNormal.moral" />
+          <span class="hardNumbers">&nbsp;${mainObjective.difficultyHard.moral}</span>
           <form:hidden path="difficultyHard.moral"/>
         </c:if>
         <c:if test="${isDifficultyHard}">
           <form:input size="1" class="cardMoral cardInput" path="difficultyHard.moral" />
+          <span class="normalNumbers">&nbsp;${mainObjective.difficultyNormal.moral}</span>
           <form:hidden path="difficultyNormal.moral" />
         </c:if>
     </div>
@@ -23,10 +25,12 @@
       COMPTEUR DE MANCHES :
         <c:if test="${isDifficultyNormal}">
           <form:input size="1" class="cardMoral cardInput" path="difficultyNormal.numberTurn"/>
+          <span class="hardNumbers">&nbsp;${mainObjective.difficultyHard.moral}</span>
           <form:hidden path="difficultyHard.numberTurn"/>
         </c:if>
         <c:if test="${isDifficultyHard}">
           <form:input size="1" class="cardMoral cardInput" path="difficultyHard.numberTurn" />
+          <span class="normalNumbers">&nbsp;${mainObjective.difficultyNormal.numberTurn}</span>
           <form:hidden path="difficultyNormal.numberTurn" />
         </c:if>
     </div> 
@@ -37,12 +41,15 @@
       </c:if>
       <c:if test="${isDifficultyHard}">
         <div class="cardText">${mainObjective.additionalRule.text}</div>
-          <form:hidden path="additionalRule.text" />
+        <form:hidden path="additionalRule.text" />
       </c:if>
     </div>
   </td>
   
   <c:set var="descriptionTypeAddRule" value="<%=DescriptionType.ADDITIONAL_RULE%>"/>
-  <form:hidden id="replacingNumbers-${descriptionTypeAddRule}" path="difficultyNormal.replacingNumbersAdditionalRule"/>
+  
+  <form:hidden id="replacingNumbers-${difficultyNormal}-${descriptionTypeAddRule}" path="difficultyNormal.replacingNumbersAdditionalRule"/>
+  <form:hidden id="replacingNumbers-${difficultyHard}-${descriptionTypeAddRule}" path="difficultyHard.replacingNumbersAdditionalRule"/>
+  
   <td id="replacingNumbersBlock-${descriptionTypeAddRule}" class="replacingNumbersBlock" style="display: none;" />
 </tr>

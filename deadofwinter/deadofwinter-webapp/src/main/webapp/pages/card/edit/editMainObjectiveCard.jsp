@@ -8,6 +8,34 @@
 <!-- JS Import -->
 <script src='<c:url value="/js/mainObjective/displayEditCard.js" />'></script>
 
+<c:set scope="request" var="difficultyNormal" value="<%=DifficultyLevel.NORMAL%>" />
+<c:set scope="request" var="difficultyHard" value="<%=DifficultyLevel.HARD%>" />
+
+<script type="text/javascript">
+
+  $(document).ready(function() {
+  		<c:if test="${isDifficultyNormal}">
+      	// On ajoute les evenements de change sur les textarea pour determiner le nombre de chiffre à remplacer
+      	$("#victoryTextArea").change(function() {
+      		updateReplacingNumberBlock($('#victoryTextArea').val(), DESCRIPTION_TYPE["VICTORY"], "${difficultyNormal}");
+      	});
+      
+      	// On ajoute les evenements de change sur les textarea pour determiner le nombre de chiffre à remplacer
+      	$("#addRuleTextArea").change(function() {
+      		updateReplacingNumberBlock($('#addRuleTextArea').val(), DESCRIPTION_TYPE["ADDITIONAL_RULE"], "${difficultyNormal}");
+      	});
+
+        updateReplacingNumberBlock("${mainObjective.victory.text}", DESCRIPTION_TYPE["VICTORY"], "${difficultyNormal}");
+  			updateReplacingNumberBlock("${mainObjective.additionalRule.text}", DESCRIPTION_TYPE["ADDITIONAL_RULE"], "${difficultyNormal}");
+      </c:if>
+
+			<c:if test="${isDifficultyHard}">
+        updateReplacingNumberBlock("${mainObjective.victory.text}", DESCRIPTION_TYPE["VICTORY"], "${difficultyHard}");
+  			updateReplacingNumberBlock("${mainObjective.additionalRule.text}", DESCRIPTION_TYPE["ADDITIONAL_RULE"], "${difficultyHard}");
+			</c:if>
+  });
+</script>
+
 <form:form action='<c:url value="/mainObjective/save.do" />' method="post" modelAttribute="mainObjective">
   <table id="cardTable">
   

@@ -4,6 +4,7 @@ Version 0.2 : Ajout de carte fonctionnelles (interface)
 Version 0.3 : Gestion de l'edition difficile (interface)
 	0.3.1 : Appel de la carte par Ajax
 	0.3.2 : Création page Difficile et appel par Ajex
+	0.3.3 : Gestion des replacing Number Difficile
 Version 0.4 : Ajout de cartes (back)
 Version 0.5 : Affichage : Mise en place de difficile / Gestion des {T}
 Version 0.6 : Liste de toutes les cartes

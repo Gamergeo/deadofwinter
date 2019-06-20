@@ -4,16 +4,16 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <dependent-module archiveName="deadofwinter-business-0.3.2.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/deadofwinter-business/deadofwinter-business">
+        <dependent-module archiveName="deadofwinter-business-0.3.3.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/deadofwinter-business/deadofwinter-business">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="deadofwinter-persistance-0.3.2.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/deadofwinter-persistance/deadofwinter-persistance">
+        <dependent-module archiveName="deadofwinter-persistance-0.3.3.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/deadofwinter-persistance/deadofwinter-persistance">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="deadofwinter-model-0.3.2.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/deadofwinter-model/deadofwinter-model">
+        <dependent-module archiveName="deadofwinter-model-0.3.3.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/deadofwinter-model/deadofwinter-model">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="deadofwinter-technical-0.3.2.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/deadofwinter-technical/deadofwinter-technical">
+        <dependent-module archiveName="deadofwinter-technical-0.3.3.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/deadofwinter-technical/deadofwinter-technical">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="java-output-path" value="/deadofwinter-webapp/target/classes"/>

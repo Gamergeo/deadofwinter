@@ -18,6 +18,9 @@
   </td>
   
   <c:set var="descriptionTypeVictory" value="<%=DescriptionType.VICTORY%>"/>
-  <form:hidden id='replacingNumbers-${descriptionTypeVictory}' path="difficultyNormal.replacingNumbersVictory"/>
+  
+  <form:hidden id="replacingNumbers-${difficultyNormal}-${descriptionTypeVictory}" path="difficultyNormal.replacingNumbersVictory"/>
+  <form:hidden id="replacingNumbers-${difficultyHard}-${descriptionTypeVictory}" path="difficultyHard.replacingNumbersVictory"/>
+  
   <td id="replacingNumbersBlock-${descriptionTypeVictory}" class="replacingNumbersBlock" style="display: none;" />
 </tr>
