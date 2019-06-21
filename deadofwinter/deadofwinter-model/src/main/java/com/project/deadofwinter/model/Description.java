@@ -1,7 +1,5 @@
 package com.project.deadofwinter.model;
 
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import org.springframework.util.StringUtils;
 
@@ -40,9 +37,6 @@ public class Description implements ModelObject {
 	@Enumerated
 	@Column(name=BaseColumnName.COLUMN_DESCRIPTION_TYPE)
 	protected DescriptionType type;
-	
-	@Transient
-	protected List<String> lines = null;
 
 	public int getId() {
 		return id;
@@ -58,7 +52,6 @@ public class Description implements ModelObject {
 
 	public void setText(String text) {
 		this.text = text;
-		this.lines = new LinkedList<String>(Arrays.asList(StringUtils.delimitedListToStringArray(text, "\\n")));
 	}
 
 	public int getNumberToReplace() {
@@ -75,18 +68,6 @@ public class Description implements ModelObject {
 
 	public void setType(DescriptionType type) {
 		this.type = type;
-	}
-	
-	/**
-	 * @return a copy of a list of the text. Each element means one sentence, ordered
-	 */
-	public List<String> getLines() {
-		
-		if (lines == null) {
-			lines = new LinkedList<String>(Arrays.asList(StringUtils.delimitedListToStringArray(text, "\\n")));
-		}
-		
-		return new LinkedList<String>(lines);
 	}
 	
 	@Override

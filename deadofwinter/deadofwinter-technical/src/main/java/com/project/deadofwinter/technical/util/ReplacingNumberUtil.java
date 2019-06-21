@@ -25,51 +25,36 @@ public abstract class ReplacingNumberUtil {
 	public static List<String> transformReplacingNumbersIntoList(String replacingNumbers) {
 		return Arrays.asList(StringUtils.delimitedListToStringArray(replacingNumbers, DeadOfWinterConstants.REPLACING_NUMBERS_SEPARATION));
 	}
+	
 	/**
-	 * @see com.project.deadofwinter.technical.util.ReplacingNumberUtil#replaceTextWithDifficultyNumbers(List , List)
+	 * @see com.project.deadofwinter.technical.util.ReplacingNumberUtil#replaceTextWithDifficultyNumbers(String , List)
 	 */
-	public static List<String> replaceTextWithDifficultyNumbers(List<String> lines, String replacingNumbers) throws ProjectException {
-		return replaceTextWithDifficultyNumbers(lines, transformReplacingNumbersIntoList(replacingNumbers));
+	public static String replaceTextWithDifficultyNumbers(String text, String replacingNumbers) throws ProjectException {
+		return replaceTextWithDifficultyNumbers(text, transformReplacingNumbersIntoList(replacingNumbers));
 	}
 	
 	/**
-	 * @param lines concerned description (numberToReplace)
-	 * @param replacingNumbers concerned difficulty (replacingNumbers)
-	 * @return an array, each element means one line with numbers replaced
+	 * @return text, replaced with replacing numbers
 	 */
-	public static List<String> replaceTextWithDifficultyNumbers(List<String> lines, List<String> replacingNumbers) throws ProjectException {
+	public static String replaceTextWithDifficultyNumbers(String text, List<String> replacingNumbers) throws ProjectException {
 		String toReplace;
-		boolean replacementDone = false;
 		int replacedIndex = 0;
 		
 		for (String replacingNumber : replacingNumbers) {
 			replacedIndex++;
-			replacementDone = false;
 			toReplace = transformIntoReplacedNumbers(replacedIndex);
 			
-			// On verifie pour chaque element de la liste
-			for (int lineIndex = 0; lineIndex < lines.size() && !replacementDone; lineIndex++) {
-				
-				// Si l'élément à remplacer est dans cette ligne, on le remplace et indique que le remplacement est fait
-				if (lines.get(lineIndex).contains(toReplace)) {
-					
-					// On corrige l'élement avec le nombre correspondant
-					String replacedLine = lines.get(lineIndex).replace(toReplace, replacingNumber); 
-					
-					lines.remove(lineIndex);
-					lines.add(lineIndex, replacedLine);
-					replacementDone = true;
-				}
-			}
-			
-			// Si le remplacement pour cet élément n'a pas été trouvé dans le tableau, alors c'est un problème
-			if (!replacementDone) {
+			// Text doesnt contain toReplace string : exception
+			if (!text.contains(toReplace)) {
 				throw new ProjectException("The text doesn't contain the {" + replacedIndex + "} string");
 			}
+			
+			text = text.replace(toReplace, replacingNumber);
 		}
 		
-		return lines;
+		return text;
 	}
+	
 	
 	/**
 	 * @return number of replaced number in a text 
@@ -91,6 +76,13 @@ public abstract class ReplacingNumberUtil {
 	 * @return number of replacing number in a string 
 	 */
 	public static int getReplcingdNumberNumber(String replacingNumbersString) {
+		int size = getReplacingNumberAsList(replacingNumbersString).size();
+		
+		// Warning : there is no separator but still one item
+		if (size == 0 && !StringUtils.isEmpty(replacingNumbersString)) {
+			return 1;
+		}
+		
 		return getReplacingNumberAsList(replacingNumbersString).size();
 	}
 	

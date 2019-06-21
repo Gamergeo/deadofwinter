@@ -5,7 +5,7 @@
   <td id="mainObjectiveCardCell-4">
 
     <div class="cardSetUpLabel">Mise en place</div>
-
+    
     <div class="cardMoral">
       MARQUEUR DE MORAL : 
         

@@ -151,7 +151,7 @@ public class MainObjective implements ModelObject {
 	 * @return an array of additional rule(s), each element means one sentence. 
 	 * @throws ProjectException 
 	 */
-	public List<String> getNormalAdditionalRules() throws ProjectException {
+	public String getNormalAdditionalRules() throws ProjectException {
 		return replaceTextWithDifficultyNumbers(getAdditionalRule(), getDifficultyNormal());
 	}
 	
@@ -160,7 +160,7 @@ public class MainObjective implements ModelObject {
 	 * @return a list of additional rule(s), each element means one sentence
 	 * @throws ProjectException 
 	 */
-	public List<String> getNormalVictoryText() throws ProjectException {		
+	public String getNormalVictoryText() throws ProjectException {		
 		return replaceTextWithDifficultyNumbers(getVictory(), getDifficultyNormal());
 	}
 	
@@ -169,8 +169,8 @@ public class MainObjective implements ModelObject {
 	 * @param difficulty concerned difficulty (replacingNumbers)
 	 * @return an array, each element means one line with numbers replaced
 	 */
-	private List<String> replaceTextWithDifficultyNumbers(Description description, Difficulty difficulty) throws ProjectException {
-		return ReplacingNumberUtil.replaceTextWithDifficultyNumbers(description.getLines(), difficulty.getReplacingNumber(description.getType()));
+	private String replaceTextWithDifficultyNumbers(Description description, Difficulty difficulty) throws ProjectException {
+		return ReplacingNumberUtil.replaceTextWithDifficultyNumbers(description.getText(), difficulty.getReplacingNumber(description.getType()));
 	}
 	
 	/**

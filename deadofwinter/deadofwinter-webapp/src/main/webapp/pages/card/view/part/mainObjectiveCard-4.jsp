@@ -10,18 +10,6 @@
 		
 		<div class="cardTurn">COMPTEUR  DE MANCHES : ${mainObjective.difficultyNormal.numberTurn}</div>
     
-    <div class="cardText cardLineSize">${additionalRulePart}</div>
-		
-		<c:forEach  var="additionalRulePart" items="${mainObjective.normalAdditionalRules}">
-			
-			<!--  Interline -->
-			<c:if test="${empty additionalRulePart}">
-				<div class="cardInterline"></div>
-			</c:if>
-			<c:if test="${not empty additionalRulePart}">
-				<div class="cardText cardLineSize">${additionalRulePart}</div>
-			</c:if>
-			
-		</c:forEach>
+    <div class="cardText">${mainObjective.normalAdditionalRules}</div>
 	</td>
 </tr>

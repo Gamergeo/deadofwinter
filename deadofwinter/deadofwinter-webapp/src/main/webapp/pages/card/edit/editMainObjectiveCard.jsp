@@ -24,14 +24,13 @@
       	$("#addRuleTextArea").change(function() {
       		updateReplacingNumberBlock($('#addRuleTextArea').val(), DESCRIPTION_TYPE["ADDITIONAL_RULE"], "${difficultyNormal}");
       	});
-
-        updateReplacingNumberBlock("${mainObjective.victory.text}", DESCRIPTION_TYPE["VICTORY"], "${difficultyNormal}");
-  			updateReplacingNumberBlock("${mainObjective.additionalRule.text}", DESCRIPTION_TYPE["ADDITIONAL_RULE"], "${difficultyNormal}");
+      	
+        updateReplacingNumberBlock(`${mainObjective.victory.text}`, DESCRIPTION_TYPE["VICTORY"], "${difficultyNormal}");
+  			updateReplacingNumberBlock(`${mainObjective.additionalRule.text}`, DESCRIPTION_TYPE["ADDITIONAL_RULE"], "${difficultyNormal}");
       </c:if>
-
 			<c:if test="${isDifficultyHard}">
-        updateReplacingNumberBlock("${mainObjective.victory.text}", DESCRIPTION_TYPE["VICTORY"], "${difficultyHard}");
-  			updateReplacingNumberBlock("${mainObjective.additionalRule.text}", DESCRIPTION_TYPE["ADDITIONAL_RULE"], "${difficultyHard}");
+        updateReplacingNumberBlock(`${mainObjective.victory.text}`, DESCRIPTION_TYPE["VICTORY"], "${difficultyHard}");
+  			updateReplacingNumberBlock(`${mainObjective.additionalRule.text}`, DESCRIPTION_TYPE["ADDITIONAL_RULE"], "${difficultyHard}");
 			</c:if>
   });
 </script>
