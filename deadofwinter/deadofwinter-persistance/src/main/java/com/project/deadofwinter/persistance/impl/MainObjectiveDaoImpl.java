@@ -26,30 +26,31 @@ public class MainObjectiveDaoImpl extends AbstractDAO<MainObjective> implements 
 	@Override
 	public List<MainObjective> findAll(boolean isOriginal, boolean isExtension, boolean isCustom) {
 
-		if (isOriginal && isExtension && isCustom) {
+		// sSi on demande aucun ou tous les types, on les renvoit tous
+		if ((isOriginal && isExtension && isCustom) || (!isOriginal && !isExtension && !isCustom)) {
 			return findAll();
 		}
 
-		String query = "FROM " + BaseTableName.TABLE_NAME_MAIN_OBJECTIVE + " mo WHERE ";
+		String query = "FROM " + BaseTableName.TABLE_NAME_MAIN_OBJECTIVE + " mo WHERE type = ";
 		
 		if (isOriginal) {
-			query += "original = 1 ";
+			query += "0";
 			
 			if (isExtension || isCustom) {
-				query += "OR ";
+				query += " OR type = ";
 			}
 		}
 		
 		if (isExtension) {
-			query += "extension = 1 ";
+			query += "1";
 			
 			if (isCustom) {
-				query += "OR ";
+				query += " OR type = ";
 			}
 		}
 		
 		if (isCustom) {
-			query += "custom = 1 ";
+			query += "2";
 		}
 
 		TypedQuery<MainObjective> typedQuery = getCurrentSession().createQuery(query, MainObjective.class);

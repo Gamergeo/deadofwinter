@@ -3,6 +3,18 @@
 <!-- CSS Import and Definitions -->
 <link href="<c:url value='/css/card/mainObjectiveCard.css' />" rel="stylesheet" media="all" type="text/css">
 
+<script type="text/javascript" src="<c:url value='/js/mainObjective/displayViewCard.js'/>"></script>
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+		$(".cardText").each(function() {
+			$(this).html(replaceTextWithImages($(this).html()));
+		});
+	});
+
+</script>
+
 <table id="cardTable">
 	
 	<!-- Line 1 : Header --> 
