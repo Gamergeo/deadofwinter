@@ -12,7 +12,7 @@
 	<properties>
 		<revision>0.5.1</revision>
 		<java.version>10</java.version>
-		<log4j.version>2.11.1</log4j.version>
+		<log4j.version>2.13.3</log4j.version>
 		<servlet.version>4.0.1</servlet.version>
     <commons.version>3.6</commons.version>
 		<spring.version>5.0.8.RELEASE</spring.version>
