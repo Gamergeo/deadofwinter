@@ -19,7 +19,7 @@
 		<mysql-connector.version>8.0.12</mysql-connector.version>
 		<maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
 		<dbcp.version>2.5.0</dbcp.version>
-		<hibernate.version>5.3.6.Final</hibernate.version>
+		<hibernate.version>5.3.20.Final</hibernate.version>
 		<jaxb.version>2.3.0</jaxb.version>
 		<jstl.version>1.2</jstl.version>			    
 		<jquery.version>3.4.1</jquery.version>
